@@ -1,0 +1,458 @@
+// =============================================================================
+//  Misure DAX - Cash Flow e Tesoreria
+//  Tabella misure: _Measures (cartelle: Data riferimento, Flussi, Saldi,
+//  Affidamenti, Crediti, Debiti, Previsione, Alert, UI)
+//
+//  Note di modello:
+//   - FactBankBalanceDaily e' uno snapshot: i saldi NON si sommano nel tempo,
+//     si legge sempre il saldo di una data precisa (misure semi-additive).
+//   - FactARInvoice / FactAPInvoice sono collegate al calendario sulla data
+//     fattura; per i saldi aperti "alla data" il filtro calendario viene
+//     rimosso e sostituito da condizioni su InvoiceDate e PaymentDate.
+//   - I giroconti tra conti propri sono esclusi da entrate, uscite e flusso netto.
+// =============================================================================
+
+
+// ------------------------------------------------------- 01 Data riferimento
+
+As Of Date =
+MAX ( FactCashForecast[AsOfDate] )
+// Data dell'ultimo estratto conto caricato (la previsione parte dal giorno dopo).
+
+Report Date =
+VAR _MaxSelected = MAX ( 'Calendar'[Date] )
+RETURN MIN ( _MaxSelected, [As Of Date] )
+// Fine del periodo selezionato, ma mai oltre la data di riferimento:
+// se seleziono "2025" ottengo il 31/12/2025, se seleziono marzo 2025 il 31/03/2025.
+
+Min Cash Threshold =
+MAX ( TreasuryParameter[MinCashThreshold] )
+
+
+// ---------------------------------------------------------------- 02 Flussi
+
+Cash Inflows =
+CALCULATE ( SUM ( FactBankTransaction[InflowAmount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+
+Cash Outflows =
+CALCULATE ( SUM ( FactBankTransaction[OutflowAmount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+
+Net Cash Flow =
+CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+
+Operating Cash Flow =
+CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Operativa" )
+// Flusso della gestione caratteristica: incassi clienti, fornitori, personale, IVA, imposte, costi di struttura.
+
+Investing Cash Flow =
+CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Investimento" )
+
+Financing Cash Flow =
+CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Finanziamento" )
+
+Free Cash Flow =
+[Operating Cash Flow] + [Investing Cash Flow]
+// Cassa generata dopo gli investimenti, disponibile per rimborsare debito e remunerare i soci.
+
+Customer Receipts =
+CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CategoryCode] IN { "IN01", "IN02" } )
+// Incassi clienti al netto degli insoluti RiBa riaddebitati.
+
+Operating Cash Flow PY =
+CALCULATE ( [Operating Cash Flow], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+
+Operating Cash Flow YoY =
+[Operating Cash Flow] - [Operating Cash Flow PY]
+
+
+// ----------------------------------------------------------------- 03 Saldi
+
+Closing Cash =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+// Saldo di fine periodo. Il filtro su 'Calendar'[Date] sostituisce quello del
+// visual (la tabella e' contrassegnata come tabella data), quindi in un grafico
+// mensile restituisce il saldo dell'ultimo giorno di ogni mese.
+
+Opening Cash =
+VAR _First = MIN ( 'Calendar'[Date] )
+RETURN
+    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _First - 1 )
+// Saldo di chiusura del giorno precedente l'inizio del periodo.
+
+Cash Movement Check =
+[Opening Cash] + [Net Cash Flow] - [Closing Cash]
+// Deve essere 0 a livello di gruppo: controllo di quadratura visibile nella pagina tecnica.
+
+Daily Cash Position =
+VAR _D = MAX ( 'Calendar'[Date] )
+RETURN
+    IF (
+        _D <= [As Of Date],
+        CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+    )
+// Per il grafico giornaliero: saldo di gruppo (o del conto filtrato) giorno per giorno.
+
+Min Daily Cash =
+MINX (
+    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+)
+// Punto di minimo della liquidita' nel periodo (picco di fabbisogno).
+
+Max Daily Cash =
+MAXX (
+    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+)
+
+Avg Daily Cash =
+AVERAGEX (
+    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+)
+
+Days Below Threshold =
+COUNTROWS (
+    FILTER (
+        VALUES ( 'Calendar'[Date] ),
+        'Calendar'[Date] <= [As Of Date]
+            && CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) ) < [Min Cash Threshold]
+    )
+)
+
+Liquidity Days =
+VAR _D = [Report Date]
+VAR _AvgDailyOut =
+    DIVIDE (
+        CALCULATE (
+            SUM ( FactBankTransaction[OutflowAmount] ),
+            CashCategory[CashFlowSection] = "Operativa",
+            DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+        ),
+        90
+    )
+RETURN DIVIDE ( [Closing Cash], _AvgDailyOut )
+// Giorni di autonomia: per quanti giorni la cassa copre le uscite operative medie.
+
+
+// ----------------------------------------------------------- 04 Affidamenti
+
+Credit Lines =
+VAR _D = [Report Date]
+RETURN CALCULATE ( SUM ( FactBankBalanceDaily[CreditLine] ), 'Calendar'[Date] = _D )
+
+Credit Line Used =
+VAR _D = [Report Date]
+RETURN
+    SUMX (
+        VALUES ( BankAccount[BankAccountKey] ),
+        VAR _Bal = CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+        RETURN IF ( _Bal < 0, -_Bal, 0 )
+    )
+// Calcolato conto per conto: un saldo positivo su un conto non compensa
+// lo scoperto su un altro (la banca guarda il singolo affidamento).
+
+Credit Line Usage % =
+DIVIDE ( [Credit Line Used], [Credit Lines] )
+
+Peak Credit Line Usage % =
+MAXX (
+    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+    VAR _D = 'Calendar'[Date]
+    RETURN
+        DIVIDE (
+            SUMX (
+                VALUES ( BankAccount[BankAccountKey] ),
+                VAR _Bal = CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+                RETURN IF ( _Bal < 0, -_Bal, 0 )
+            ),
+            CALCULATE ( SUM ( FactBankBalanceDaily[CreditLine] ), 'Calendar'[Date] = _D )
+        )
+)
+
+Available Liquidity =
+VAR _D = [Report Date]
+RETURN CALCULATE ( SUM ( FactBankBalanceDaily[AvailableFunds] ), 'Calendar'[Date] = _D )
+// Cassa + affidamenti non utilizzati: la "potenza di fuoco" disponibile.
+
+
+// --------------------------------------------------------------- 05 Crediti
+
+Outstanding Receivables =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE (
+        SUM ( FactARInvoice[GrossAmount] ),
+        REMOVEFILTERS ( 'Calendar' ),
+        FactARInvoice[InvoiceDate] <= _D,
+        FILTER (
+            ALL ( FactARInvoice[PaymentDate] ),
+            ISBLANK ( FactARInvoice[PaymentDate] ) || FactARInvoice[PaymentDate] > _D
+        )
+    )
+// Crediti aperti alla data: fatture emesse entro la data e non ancora incassate a quella data.
+// Funziona anche "a ritroso" (es. crediti aperti al 30/06/2024) perche' usa la data di incasso.
+
+Overdue Receivables =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE (
+        [Outstanding Receivables],
+        FactARInvoice[DueDate] < _D
+    )
+
+Overdue Receivables % =
+DIVIDE ( [Overdue Receivables], [Outstanding Receivables] )
+
+Overdue > 90 Days =
+VAR _D = [Report Date]
+RETURN CALCULATE ( [Outstanding Receivables], FactARInvoice[DueDate] < _D - 90 )
+
+Gross Sales 90D =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE (
+        SUM ( FactARInvoice[GrossAmount] ),
+        DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+    )
+
+DSO =
+DIVIDE ( [Outstanding Receivables], [Gross Sales 90D] ) * 90
+// Days Sales Outstanding, metodo semplice: crediti aperti / fatturato (IVA inclusa,
+// coerente con i crediti) degli ultimi 90 giorni x 90.
+
+DSO PY =
+CALCULATE ( [DSO], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+
+Avg Payment Delay (days) =
+CALCULATE (
+    AVERAGEX ( FactARInvoice, MAX ( 0, FactARInvoice[PaymentDelayDays] ) ),
+    NOT ISBLANK ( FactARInvoice[PaymentDate] )
+)
+// Ritardo medio rispetto alla scadenza delle fatture incassate (anticipi contati come 0).
+
+Bounced RiBa =
+CALCULATE ( COUNTROWS ( FactARInvoice ), FactARInvoice[IsBounced] = TRUE () )
+
+Bounced RiBa % =
+DIVIDE (
+    [Bounced RiBa],
+    CALCULATE ( COUNTROWS ( FactARInvoice ), Counterparty[PaymentMethod] = "RiBa" )
+)
+
+
+// ---------------------------------------------------------------- 06 Debiti
+
+Outstanding Payables =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE (
+        SUM ( FactAPInvoice[GrossAmount] ),
+        REMOVEFILTERS ( 'Calendar' ),
+        FactAPInvoice[InvoiceDate] <= _D,
+        FILTER (
+            ALL ( FactAPInvoice[PaymentDate] ),
+            ISBLANK ( FactAPInvoice[PaymentDate] ) || FactAPInvoice[PaymentDate] > _D
+        )
+    )
+
+Overdue Payables =
+VAR _D = [Report Date]
+RETURN CALCULATE ( [Outstanding Payables], FactAPInvoice[DueDate] < _D )
+
+Purchases 90D =
+VAR _D = [Report Date]
+RETURN
+    CALCULATE (
+        SUM ( FactAPInvoice[GrossAmount] ),
+        DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+    )
+
+DPO =
+DIVIDE ( [Outstanding Payables], [Purchases 90D] ) * 90
+
+Net Trade Working Capital =
+[Outstanding Receivables] - [Outstanding Payables]
+// Crediti - debiti commerciali (il magazzino non e' nel perimetro del modello).
+
+DSO - DPO Gap =
+[DSO] - [DPO]
+// Se positivo, l'azienda incassa piu' tardi di quanto paghi: finanzia i clienti con la propria cassa.
+
+
+// ------------------------------------------------------------ 07 Previsione
+
+Forecast Net Flow =
+SUM ( FactCashForecast[Amount] )
+
+Forecast Inflows =
+CALCULATE ( SUM ( FactCashForecast[Amount] ), FactCashForecast[Amount] > 0 )
+
+Forecast Outflows =
+-CALCULATE ( SUM ( FactCashForecast[Amount] ), FactCashForecast[Amount] < 0 )
+
+Forecast Opening Cash =
+VAR _AsOf = [As Of Date]
+RETURN
+    CALCULATE (
+        SUM ( FactBankBalanceDaily[ClosingBalance] ),
+        REMOVEFILTERS ( 'Calendar' ),
+        'Calendar'[Date] = _AsOf
+    )
+
+Projected Cash =
+VAR _D = MAX ( 'Calendar'[Date] )
+VAR _AsOf = [As Of Date]
+RETURN
+    IF (
+        _D > _AsOf,
+        [Forecast Opening Cash]
+            + CALCULATE (
+                SUM ( FactCashForecast[Amount] ),
+                REMOVEFILTERS ( 'Calendar' ),
+                'Calendar'[Date] > _AsOf,
+                'Calendar'[Date] <= _D
+            )
+    )
+// Saldo previsto cumulato: cassa alla data di riferimento + flussi previsti fino al giorno/settimana.
+
+Cash Actual and Projected =
+VAR _D = MAX ( 'Calendar'[Date] )
+RETURN IF ( _D <= [As Of Date], [Daily Cash Position], [Projected Cash] )
+// Un'unica serie per il grafico "ultimi 6 mesi + prossime 13 settimane".
+
+Projected Min Cash 13W =
+MINX (
+    FILTER ( ALL ( 'Calendar'[Date] ), 'Calendar'[Date] > [As Of Date] && 'Calendar'[Date] <= [As Of Date] + 91 ),
+    [Projected Cash]
+)
+
+Projected Min Cash Date =
+VAR _Min = [Projected Min Cash 13W]
+RETURN
+    MINX (
+        FILTER (
+            ALL ( 'Calendar'[Date] ),
+            'Calendar'[Date] > [As Of Date] && 'Calendar'[Date] <= [As Of Date] + 91
+                && [Projected Cash] = _Min
+        ),
+        'Calendar'[Date]
+    )
+
+Funding Need 13W =
+VAR _Gap = [Min Cash Threshold] - [Projected Min Cash 13W]
+RETURN IF ( _Gap > 0, _Gap, 0 )
+// Fabbisogno finanziario: quanto manca, nel punto di minimo previsto, per restare sopra la soglia.
+
+
+// ----------------------------------------------------------------- 08 Alert
+
+Alert Low Cash =
+IF ( [Closing Cash] < [Min Cash Threshold], 1, 0 )
+
+Alert Forecast Breach =
+IF ( [Projected Min Cash 13W] < [Min Cash Threshold], 1, 0 )
+
+Alert Credit Line =
+IF ( [Credit Line Usage %] * 100 > MAX ( TreasuryParameter[CreditLineUsageAlert] ), 1, 0 )
+
+Alert DSO =
+IF ( [DSO] > MAX ( TreasuryParameter[DSOTarget] ), 1, 0 )
+
+Alert Overdue =
+IF ( [Overdue Receivables %] * 100 > MAX ( TreasuryParameter[OverdueRatioAlert] ), 1, 0 )
+
+Alert Liquidity Days =
+IF ( [Liquidity Days] < MAX ( TreasuryParameter[LiquidityDaysMin] ), 1, 0 )
+
+Active Alerts =
+[Alert Low Cash] + [Alert Forecast Breach] + [Alert Credit Line]
+    + [Alert DSO] + [Alert Overdue] + [Alert Liquidity Days]
+
+Treasury Status =
+SWITCH (
+    TRUE (),
+    [Alert Low Cash] = 1 || [Alert Forecast Breach] = 1, "ROSSO - rischio liquidita'",
+    [Active Alerts] >= 2, "GIALLO - da monitorare",
+    "VERDE - situazione sotto controllo"
+)
+
+Treasury Status Color =
+SWITCH (
+    TRUE (),
+    [Alert Low Cash] = 1 || [Alert Forecast Breach] = 1, "#C0392B",
+    [Active Alerts] >= 2, "#E0A100",
+    "#1E8E5A"
+)
+
+// --- tabella alert (tabella calcolata scollegata) ---
+// AlertList =
+// DATATABLE (
+//     "AlertID", INTEGER, "AlertName", STRING, "Rule", STRING,
+//     {
+//         { 1, "Liquidita' sotto soglia",       "Cassa di gruppo < soglia minima" },
+//         { 2, "Previsione sotto soglia",       "Minimo previsto 13 settimane < soglia" },
+//         { 3, "Utilizzo affidamenti",          "Utilizzo fidi > % parametro" },
+//         { 4, "DSO oltre obiettivo",           "DSO > giorni obiettivo" },
+//         { 5, "Scaduto clienti elevato",       "Scaduto / crediti aperti > % parametro" },
+//         { 6, "Giorni di autonomia",           "Cassa / uscite medie giornaliere < giorni minimi" }
+//     }
+// )
+
+Alert Current Value =
+SWITCH (
+    SELECTEDVALUE ( AlertList[AlertID] ),
+    1, FORMAT ( [Closing Cash], "€ #,0" ),
+    2, FORMAT ( [Projected Min Cash 13W], "€ #,0" ),
+    3, FORMAT ( [Credit Line Usage %], "0.0%" ),
+    4, FORMAT ( [DSO], "0" ) & " gg",
+    5, FORMAT ( [Overdue Receivables %], "0.0%" ),
+    6, FORMAT ( [Liquidity Days], "0" ) & " gg"
+)
+
+Alert Threshold =
+SWITCH (
+    SELECTEDVALUE ( AlertList[AlertID] ),
+    1, FORMAT ( [Min Cash Threshold], "€ #,0" ),
+    2, FORMAT ( [Min Cash Threshold], "€ #,0" ),
+    3, FORMAT ( MAX ( TreasuryParameter[CreditLineUsageAlert] ) / 100, "0%" ),
+    4, FORMAT ( MAX ( TreasuryParameter[DSOTarget] ), "0" ) & " gg",
+    5, FORMAT ( MAX ( TreasuryParameter[OverdueRatioAlert] ) / 100, "0%" ),
+    6, FORMAT ( MAX ( TreasuryParameter[LiquidityDaysMin] ), "0" ) & " gg"
+)
+
+Alert Is Active =
+SWITCH (
+    SELECTEDVALUE ( AlertList[AlertID] ),
+    1, [Alert Low Cash], 2, [Alert Forecast Breach], 3, [Alert Credit Line],
+    4, [Alert DSO], 5, [Alert Overdue], 6, [Alert Liquidity Days]
+)
+
+Alert Icon =
+IF ( [Alert Is Active] = 1, "●  ATTIVO", "○  ok" )
+
+Alert Color =
+IF ( [Alert Is Active] = 1, "#C0392B", "#1E8E5A" )
+
+
+// -------------------------------------------------------------------- 09 UI
+
+Title Cash Position =
+"Posizione di cassa al " & FORMAT ( [Report Date], "dd/mm/yyyy" )
+
+Subtitle Forecast =
+"Previsione dal " & FORMAT ( [As Of Date] + 1, "dd/mm/yyyy" ) & " al "
+    & FORMAT ( [As Of Date] + 91, "dd/mm/yyyy" ) & " - fonti: scadenzari aperti + uscite ricorrenti"
+
+Funding Need Message =
+VAR _Need = [Funding Need 13W]
+RETURN
+    IF (
+        _Need > 0,
+        "Fabbisogno stimato di € " & FORMAT ( _Need, "#,0" ) & " intorno al "
+            & FORMAT ( [Projected Min Cash Date], "dd/mm" ) & ": valutare utilizzo affidamenti o anticipo fatture.",
+        "Nessun fabbisogno previsto: il minimo di cassa resta sopra la soglia di € "
+            & FORMAT ( [Min Cash Threshold], "#,0" ) & "."
+    )
