@@ -1,16 +1,16 @@
 # Dashboard Cash Flow e Tesoreria 
 
-Monitoraggio della liquidità e delle disponibilità bancarie.
+- Monitoraggio della liquidità e delle disponibilità bancarie.
 
-Rendiconto finanziario a metodo diretto.
+- Rendiconto finanziario a metodo diretto.
 
-Analisi di crediti, debiti, scadenzari e insoluti.
+- Analisi di crediti, debiti, scadenzari e insoluti.
 
-Monitoraggio di DSO, DPO e utilizzo degli affidamenti.
+- Monitoraggio di DSO, DPO e utilizzo degli affidamenti.
 
-Previsione dei flussi di cassa.
+- Previsione dei flussi di cassa.
 
-Alert automatici per individuare anticipatamente rischi di liquidità.
+- Alert automatici per individuare anticipatamente rischi di liquidità.
 
 Dashboard Power BI composta da pagine interattive.
 
