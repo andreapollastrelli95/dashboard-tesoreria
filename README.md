@@ -67,7 +67,7 @@ Obiettivi:
 ## Struttura del repository
 
 ```
-cash-flow-treasury/
+dashboard-tesoreria/
 ├── data/                       estratti CSV (banche, scadenzari, anagrafiche)
 ├── python/generate_data.py     generazione del dataset simulato
 ├── sql/
@@ -222,6 +222,6 @@ Le immagini sono i mockup delle pagine, costruiti con i dati del progetto. Il de
 
 ---
 
-Andrea Pollastrelli · [Portfolio](https://andreapollastrelli95.github.io/)
+Andrea Pollastrelli · [LinkedIn](https://www.linkedin.com/in/andrea-pollastrelli-930958157) · [Portfolio](https://andreapollastrelli95.github.io/)
 
 Dati interamente simulati: aziende e persone sono di fantasia, i nomi di banche e fornitori sono usati solo per rendere realistico lo scenario.

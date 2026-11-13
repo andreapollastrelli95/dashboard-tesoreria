@@ -8,7 +8,7 @@ USE TreasuryDW;
 GO
 SET NOCOUNT ON;
 
-DECLARE @DataPath NVARCHAR(400) = N'C:\Projects\cash-flow-treasury\data\';   -- <-- modificare
+DECLARE @DataPath NVARCHAR(400) = N'C:\Projects\dashboard-tesoreria\data\';   -- <-- modificare
 DECLARE @sql NVARCHAR(MAX);
 
 DECLARE @files TABLE (TableName SYSNAME, FileName NVARCHAR(200));
