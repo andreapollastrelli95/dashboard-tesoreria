@@ -1,5 +1,7 @@
 # Dashboard Cash Flow e Tesoreria 
 
+Obiettivi del progetto:
+
 - Monitoraggio della liquidità e delle disponibilità bancarie.
 
 - Rendiconto finanziario a metodo diretto.
