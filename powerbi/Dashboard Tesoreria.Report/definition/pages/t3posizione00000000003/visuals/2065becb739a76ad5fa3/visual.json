@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2065becb739a76ad5fa3",
+  "position": {
+    "x": 20,
+    "y": 494,
+    "z": 0,
+    "height": 210,
+    "width": 1240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BankAccount"
+                    }
+                  },
+                  "Property": "AccountShortName"
+                }
+              },
+              "queryRef": "BankAccount.AccountShortName",
+              "nativeQueryRef": "AccountShortName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BankAccount"
+                    }
+                  },
+                  "Property": "AccountSite"
+                }
+              },
+              "queryRef": "BankAccount.AccountSite",
+              "nativeQueryRef": "AccountSite"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactBankTransaction"
+                    }
+                  },
+                  "Property": "Closing Cash"
+                }
+              },
+              "queryRef": "FactBankTransaction.Closing Cash",
+              "nativeQueryRef": "Closing Cash"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactBankTransaction"
+                    }
+                  },
+                  "Property": "Credit Lines"
+                }
+              },
+              "queryRef": "FactBankTransaction.Credit Lines",
+              "nativeQueryRef": "Credit Lines"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactBankTransaction"
+                    }
+                  },
+                  "Property": "Credit Line Used"
+                }
+              },
+              "queryRef": "FactBankTransaction.Credit Line Used",
+              "nativeQueryRef": "Credit Line Used"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactBankTransaction"
+                    }
+                  },
+                  "Property": "Credit Line Usage %"
+                }
+              },
+              "queryRef": "FactBankTransaction.Credit Line Usage %",
+              "nativeQueryRef": "Credit Line Usage %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactBankTransaction"
+                    }
+                  },
+                  "Property": "Available Liquidity"
+                }
+              },
+              "queryRef": "FactBankTransaction.Available Liquidity",
+              "nativeQueryRef": "Available Liquidity"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Conti e affidamenti'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

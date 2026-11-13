@@ -1,0 +1,43 @@
+table TreasuryParameter
+	lineageTag: 6e4b9b2f-804c-54c8-97de-9634052019c2
+
+	column MinCashThreshold
+		dataType: int64
+		lineageTag: c1363dc0-2271-486d-9461-b990d6ed9321
+		summarizeBy: none
+		sourceColumn: MinCashThreshold
+
+	column CreditLineUsageAlert
+		dataType: int64
+		lineageTag: bf30af28-d36e-48c5-863d-161e38dabe00
+		summarizeBy: none
+		sourceColumn: CreditLineUsageAlert
+
+	column DSOTarget
+		dataType: int64
+		lineageTag: 6dcf3cf3-5ee8-410f-b8d6-eff73e8ad96b
+		summarizeBy: none
+		sourceColumn: DSOTarget
+
+	column OverdueRatioAlert
+		dataType: int64
+		lineageTag: c639b3b3-28bd-470c-9fa7-17f511d8e085
+		summarizeBy: none
+		sourceColumn: OverdueRatioAlert
+
+	column LiquidityDaysMin
+		dataType: int64
+		lineageTag: efa30382-d508-488f-b321-34c056c421f3
+		summarizeBy: none
+		sourceColumn: LiquidityDaysMin
+
+	partition TreasuryParameter = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\treasury_parameter.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"MinCashThreshold", Int64.Type}, {"CreditLineUsageAlert", Int64.Type}, {"DSOTarget", Int64.Type}, {"OverdueRatioAlert", Int64.Type}, {"LiquidityDaysMin", Int64.Type}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,8 @@
+BankAccountKey,BankAccountCode,AccountName,BankName,AccountType,CreditLine,AccountSite,AccountShortName
+1,BK01,Intesa Sanpaolo - Conto corrente ordinario,Intesa Sanpaolo,Conto corrente ordinario,1500000,Milano - Sede centrale,Intesa Sanpaolo (Conto corrente)
+2,BK02,UniCredit - Conto corrente ordinario,UniCredit,Conto corrente ordinario,1000000,Milano - Sede centrale,UniCredit (Conto corrente)
+3,BK03,Banco BPM - Conto anticipi / RiBa,Banco BPM,Conto anticipi / RiBa,800000,Milano - Sede centrale,Banco BPM (Conto anticipi)
+4,BK04,BPER Banca - Conto corrente ordinario,BPER Banca,Conto corrente ordinario,500000,Bologna,BPER Banca (Conto corrente)
+5,BK05,BNL - Conto corrente ordinario,BNL,Conto corrente ordinario,400000,Roma,BNL (Conto corrente)
+6,BK06,Credem - Conto corrente ordinario,Credem,Conto corrente ordinario,300000,Napoli,Credem (Conto corrente)
+7,BK07,Banca Sella - Conto deposito vincolabile,Banca Sella,Conto deposito vincolabile,0,Milano - Sede centrale,Banca Sella (Conto deposito)

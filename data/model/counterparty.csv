@@ -1,0 +1,558 @@
+CounterpartyKey,CounterpartyCode,CounterpartyName,CounterpartyType,HomeSiteCode,PaymentTerms,PaymentMethod,CustomerSegment
+-1,N/D,Nessuna controparte (giroconti),Interno,,n.a.,n.a.,n.a.
+1,CL00001,Edil Italia S.r.l.,Cliente,MI,BB30DF,Bonifico,Installatore
+2,CL00002,Tecno Sud di Rossi Mario,Cliente,MI,RD,Rimessa diretta,Installatore
+3,CL00003,Termo Solar di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+4,CL00004,Tecno Sistemi S.p.A.,Cliente,MI,RIBA90FM,RiBa,Installatore
+5,CL00005,Termo Centro S.a.s.,Cliente,MI,BB60DF,Bonifico,Industria
+6,CL00006,Impianti Centro S.r.l.,Cliente,MI,BB60DF,Bonifico,Installatore
+7,CL00007,Global Sud S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Industria
+8,CL00008,Global Sistemi S.p.A.,Cliente,MI,RIBA90FM,RiBa,Installatore
+9,CL00009,Impianti Group S.p.A.,Cliente,MI,RIBA60FM,RiBa,Installatore
+10,CL00010,Tecno Sistemi S.n.c.,Cliente,MI,BB60DF,Bonifico,Rivenditore
+11,CL00011,Energia Installazioni S.r.l.,Cliente,MI,BB30DF,Bonifico,Installatore
+12,CL00012,Tecno Centro di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+13,CL00013,Clima Progetti S.p.A.,Cliente,MI,BB30DF,Bonifico,Installatore
+14,CL00014,Clima Nord S.p.A.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+15,CL00015,Clima & Figli S.r.l.,Cliente,MI,BB30DF,Bonifico,Installatore
+16,CL00016,Clima Point S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+17,CL00017,Energia Service di Rossi Mario,Cliente,MI,BB60DF,Bonifico,Installatore
+18,CL00018,Idro Lavori di Rossi Mario,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+19,CL00019,Impianti Impianti S.n.c.,Cliente,MI,RIBA90FM,RiBa,Installatore
+20,CL00020,Elettro Sud S.r.l.,Cliente,MI,BB30DF,Bonifico,Impresa edile
+21,CL00021,Edil Progetti S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+22,CL00022,Impianti Point S.r.l.,Cliente,MI,RIBA120FM,RiBa,Installatore
+23,CL00023,Edil Sud S.p.A.,Cliente,MI,RD,Rimessa diretta,Industria
+24,CL00024,Idro Centro S.p.A.,Cliente,MI,BB30DF,Bonifico,Installatore
+25,CL00025,Termo Progetti S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+26,CL00026,Idro Progetti di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+27,CL00027,Impianti Nord S.r.l.,Cliente,MI,BB30DF,Bonifico,Impresa edile
+28,CL00028,Clima Centro S.r.l.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+29,CL00029,Tecno Sistemi S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+30,CL00030,Clima Progetti S.n.c.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+31,CL00031,Edil Lavori S.p.A.,Cliente,MI,RIBA60FM,RiBa,Installatore
+32,CL00032,Global Progetti S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+33,CL00033,Casa Installazioni S.p.A.,Cliente,MI,RIBA90FM,RiBa,Installatore
+34,CL00034,Clima Service S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+35,CL00035,Tecno Sud S.r.l.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+36,CL00036,Idro Installazioni S.r.l.,Cliente,MI,BB30DF,Bonifico,Industria
+37,CL00037,Termo & Figli S.p.A.,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+38,CL00038,Impianti Group S.r.l.s.,Cliente,MI,BB30DF,Bonifico,Installatore
+39,CL00039,Casa Point S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+40,CL00040,Termo Impianti S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+41,CL00041,Termo Lavori S.p.A.,Cliente,MI,BB60DF,Bonifico,Rivenditore
+42,CL00042,Impianti Solar S.r.l.,Cliente,MI,RIBA120FM,RiBa,Rivenditore
+43,CL00043,Casa Group S.r.l.,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+44,CL00044,Termo Tecnica S.a.s.,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+45,CL00045,Casa Centro S.n.c.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+46,CL00046,Casa Impianti S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+47,CL00047,Idro Lavori S.r.l.s.,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+48,CL00048,Tecno Service di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+49,CL00049,Clima Solar S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+50,CL00050,Impianti Installazioni S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+51,CL00051,Tecno Italia S.r.l.,Cliente,MI,BB60DF,Bonifico,Installatore
+52,CL00052,Termo & Figli S.r.l.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+53,CL00053,Casa Italia S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+54,CL00054,Edil Group S.n.c.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+55,CL00055,Clima Installazioni S.n.c.,Cliente,MI,BB60DF,Bonifico,Installatore
+56,CL00056,Casa Solar S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+57,CL00057,Edil Italia di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+58,CL00058,Impianti Impianti S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+59,CL00059,Energia & Figli S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+60,CL00060,Clima Service S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+61,CL00061,Elettro Lavori S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+62,CL00062,Global Solar di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+63,CL00063,Energia Group S.r.l.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+64,CL00064,Elettro Tecnica S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+65,CL00065,Clima Progetti S.r.l.s.,Cliente,MI,BB60DF,Bonifico,Installatore
+66,CL00066,Idro Point S.n.c.,Cliente,MI,BB60DF,Bonifico,Rivenditore
+67,CL00067,Energia Centro S.r.l.,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+68,CL00068,Energia Progetti di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+69,CL00069,Impianti Progetti S.p.A.,Cliente,MI,RIBA60FM,RiBa,Installatore
+70,CL00070,Clima Tecnica di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+71,CL00071,Impianti Centro S.r.l.s.,Cliente,MI,RIBA120FM,RiBa,Industria
+72,CL00072,Edil & Figli S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+73,CL00073,Energia Centro S.a.s.,Cliente,MI,BB30DF,Bonifico,Installatore
+74,CL00074,Clima Sud S.p.A.,Cliente,MI,BB30DF,Bonifico,Installatore
+75,CL00075,Energia Nord di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Installatore
+76,CL00076,Energia Progetti S.a.s.,Cliente,MI,BB60DF,Bonifico,Rivenditore
+77,CL00077,Elettro Group di Rossi Mario,Cliente,MI,BB30DF,Bonifico,Installatore
+78,CL00078,Clima Sistemi S.p.A.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+79,CL00079,Global Centro S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+80,CL00080,Global Italia S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+81,CL00081,Global Group S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+82,CL00082,Tecno Installazioni di Rossi Mario,Cliente,MI,BB60DF,Bonifico,Installatore
+83,CL00083,Impianti Sistemi S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+84,CL00084,Termo & Figli S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+85,CL00085,Casa Nord S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+86,CL00086,Idro Italia S.r.l.s.,Cliente,MI,RD,Rimessa diretta,Installatore
+87,CL00087,Tecno & Figli S.r.l.,Cliente,MI,RIBA90FM,RiBa,Installatore
+88,CL00088,Casa Progetti S.n.c.,Cliente,MI,BB60DF,Bonifico,Installatore
+89,CL00089,Edil & Figli S.r.l.,Cliente,MI,BB60DF,Bonifico,Industria
+90,CL00090,Termo Nord S.r.l.s.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+91,CL00091,Tecno Solar S.r.l.s.,Cliente,MI,RIBA120FM,RiBa,Installatore
+92,CL00092,Elettro Italia S.r.l.,Cliente,MI,RIBA60FM,RiBa,Industria
+93,CL00093,Elettro Service S.r.l.,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+94,CL00094,Elettro Installazioni di Rossi Mario,Cliente,MI,BB30DF,Bonifico,Installatore
+95,CL00095,Termo Centro di Rossi Mario,Cliente,MI,BB30DF,Bonifico,Rivenditore
+96,CL00096,Tecno Lavori S.p.A.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+97,CL00097,Global Italia di Rossi Mario,Cliente,MI,BB60DF,Bonifico,Installatore
+98,CL00098,Clima Point di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+99,CL00099,Tecno Group S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+100,CL00100,Global Impianti S.n.c.,Cliente,MI,RIBA60FM,RiBa,Installatore
+101,CL00101,Casa Solar S.a.s.,Cliente,MI,BB30DF,Bonifico,Installatore
+102,CL00102,Edil & Figli S.p.A.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+103,CL00103,Tecno Progetti S.p.A.,Cliente,MI,BB60DF,Bonifico,Installatore
+104,CL00104,Casa Impianti S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+105,CL00105,Idro Progetti S.a.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+106,CL00106,Casa & Figli S.a.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+107,CL00107,Elettro & Figli S.n.c.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+108,CL00108,Clima Nord S.n.c.,Cliente,MI,RIBA120FM,RiBa,Rivenditore
+109,CL00109,Impianti Point S.p.A.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+110,CL00110,Energia Lavori di Rossi Mario,Cliente,MI,BB60DF,Bonifico,Rivenditore
+111,CL00111,Clima Tecnica S.p.A.,Cliente,MI,RIBA60FM,RiBa,Installatore
+112,CL00112,Energia Service S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+113,CL00113,Idro Service di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+114,CL00114,Edil Tecnica S.a.s.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+115,CL00115,Termo Lavori S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Industria
+116,CL00116,Global Sud S.r.l.,Cliente,MI,BB30DF,Bonifico,Installatore
+117,CL00117,Global Lavori S.p.A.,Cliente,MI,RIBA120FM,RiBa,Installatore
+118,CL00118,Termo Point S.p.A.,Cliente,MI,BB60DF,Bonifico,Rivenditore
+119,CL00119,Clima Progetti di Rossi Mario,Cliente,MI,RD,Rimessa diretta,Installatore
+120,CL00120,Impianti Lavori S.p.A.,Cliente,MI,BB30DF,Bonifico,Installatore
+121,CL00121,Casa Service S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+122,CL00122,Idro Sud S.p.A.,Cliente,MI,RIBA90FM,RiBa,Installatore
+123,CL00123,Energia Nord S.p.A.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+124,CL00124,Tecno Sud S.n.c.,Cliente,MI,BB30DF,Bonifico,Impresa edile
+125,CL00125,Global Sud di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+126,CL00126,Termo Italia S.n.c.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+127,CL00127,Impianti Service S.n.c.,Cliente,MI,RIBA90FM,RiBa,Industria
+128,CL00128,Elettro Tecnica S.n.c.,Cliente,MI,RIBA120FM,RiBa,Installatore
+129,CL00129,Termo Progetti S.n.c.,Cliente,MI,BB60DF,Bonifico,Impresa edile
+130,CL00130,Termo Sud S.p.A.,Cliente,MI,RIBA60FM,RiBa,Industria
+131,CL00131,Tecno Point di Rossi Mario,Cliente,MI,RIBA120FM,RiBa,Industria
+132,CL00132,Tecno Centro S.p.A.,Cliente,MI,BB30DF,Bonifico,Installatore
+133,CL00133,Casa Nord S.n.c.,Cliente,MI,BB30DF,Bonifico,Industria
+134,CL00134,Casa Point di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+135,CL00135,Clima Centro S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Industria
+136,CL00136,Elettro Centro S.a.s.,Cliente,MI,RIBA90FM,RiBa,Impresa edile
+137,CL00137,Elettro Progetti di Rossi Mario,Cliente,MI,BB30DF,Bonifico,Installatore
+138,CL00138,Tecno Centro S.a.s.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+139,CL00139,Impianti Italia S.n.c.,Cliente,MI,BB60DF,Bonifico,Installatore
+140,CL00140,Elettro Progetti S.r.l.,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+141,CL00141,Global Progetti S.a.s.,Cliente,MI,RIBA120FM,RiBa,Impresa edile
+142,CL00142,Energia Lavori S.n.c.,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+143,CL00143,Edil Tecnica S.r.l.,Cliente,MI,RIBA60FM,RiBa,Industria
+144,CL00144,Idro Sud S.n.c.,Cliente,MI,RIBA60FM,RiBa,Rivenditore
+145,CL00145,Casa Italia S.a.s.,Cliente,MI,BB30DF,Bonifico,Impresa edile
+146,CL00146,Idro Lavori S.n.c.,Cliente,MI,RIBA90FM,RiBa,Installatore
+147,CL00147,Impianti Progetti S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+148,CL00148,Clima & Figli S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Industria
+149,CL00149,Idro Solar S.r.l.s.,Cliente,MI,RIBA60FM,RiBa,Impresa edile
+150,CL00150,Tecno Nord S.r.l.,Cliente,MI,BB30DF,Bonifico,Installatore
+151,CL00151,Idro Tecnica S.r.l.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+152,CL00152,Clima Centro S.a.s.,Cliente,MI,RIBA90FM,RiBa,Installatore
+153,CL00153,Edil Group di Rossi Mario,Cliente,MI,RD,Rimessa diretta,Industria
+154,CL00154,Termo & Figli S.n.c.,Cliente,MI,BB30DF,Bonifico,Impresa edile
+155,CL00155,Termo Service S.r.l.s.,Cliente,MI,RD,Rimessa diretta,Installatore
+156,CL00156,Casa & Figli S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+157,CL00157,Elettro Service di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Installatore
+158,CL00158,Termo Progetti S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+159,CL00159,Termo Service S.n.c.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+160,CL00160,Termo Installazioni S.p.A.,Cliente,MI,RIBA60FM,RiBa,Installatore
+161,CL00161,Edil Italia S.p.A.,Cliente,MI,RIBA90FM,RiBa,Installatore
+162,CL00162,Idro Italia S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+163,CL00163,Edil Service S.p.A.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+164,CL00164,Edil Installazioni S.r.l.,Cliente,MI,RIBA60FM,RiBa,Industria
+165,CL00165,Termo Sud S.a.s.,Cliente,MI,RIBA60FM,RiBa,Installatore
+166,CL00166,Tecno Italia S.p.A.,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+167,CL00167,Elettro Solar di Rossi Mario,Cliente,MI,RIBA90FM,RiBa,Rivenditore
+168,CL00168,Elettro Tecnica di Rossi Mario,Cliente,MI,RIBA60FM,RiBa,Installatore
+169,CL00169,Clima Progetti S.a.s.,Cliente,MI,BB30DF,Bonifico,Installatore
+170,CL00170,Impianti Tecnica S.r.l.,Cliente,MI,RIBA60FM,RiBa,Installatore
+171,CL00171,Impianti Centro di Rossi Mario,Cliente,BO,BB30DF,Bonifico,Industria
+172,CL00172,Termo Centro S.p.A.,Cliente,BO,RIBA90FM,RiBa,Industria
+173,CL00173,Clima Point S.a.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+174,CL00174,Termo Nord S.r.l.,Cliente,BO,BB60DF,Bonifico,Installatore
+175,CL00175,Idro Tecnica S.a.s.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+176,CL00176,Termo Group di Rossi Mario,Cliente,BO,RIBA60FM,RiBa,Installatore
+177,CL00177,Global Sud S.p.A.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+178,CL00178,Casa Lavori S.r.l.s.,Cliente,BO,BB30DF,Bonifico,Rivenditore
+179,CL00179,Elettro Point S.r.l.,Cliente,BO,RIBA90FM,RiBa,Industria
+180,CL00180,Edil Impianti S.n.c.,Cliente,BO,RIBA90FM,RiBa,Installatore
+181,CL00181,Casa Point S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+182,CL00182,Tecno Solar S.a.s.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+183,CL00183,Impianti & Figli di Rossi Mario,Cliente,BO,BB30DF,Bonifico,Impresa edile
+184,CL00184,Tecno Italia S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+185,CL00185,Global Progetti S.r.l.,Cliente,BO,RIBA60FM,RiBa,Industria
+186,CL00186,Impianti Nord S.n.c.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+187,CL00187,Elettro Nord S.a.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+188,CL00188,Casa Tecnica S.n.c.,Cliente,BO,RIBA60FM,RiBa,Installatore
+189,CL00189,Elettro Tecnica S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+190,CL00190,Casa & Figli S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+191,CL00191,Edil Lavori S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+192,CL00192,Edil Sistemi S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+193,CL00193,Idro Group S.r.l.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+194,CL00194,Idro Sistemi S.r.l.s.,Cliente,BO,BB60DF,Bonifico,Industria
+195,CL00195,Edil Impianti S.r.l.s.,Cliente,BO,RD,Rimessa diretta,Impresa edile
+196,CL00196,Impianti Centro S.a.s.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+197,CL00197,Edil Impianti S.r.l.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+198,CL00198,Energia Italia S.n.c.,Cliente,BO,BB30DF,Bonifico,Installatore
+199,CL00199,Elettro Group S.a.s.,Cliente,BO,BB30DF,Bonifico,Installatore
+200,CL00200,Casa Tecnica S.r.l.,Cliente,BO,BB60DF,Bonifico,Rivenditore
+201,CL00201,Idro Solar S.a.s.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+202,CL00202,Clima Lavori di Rossi Mario,Cliente,BO,BB60DF,Bonifico,Installatore
+203,CL00203,Elettro Centro S.n.c.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+204,CL00204,Clima Italia S.p.A.,Cliente,BO,RIBA90FM,RiBa,Installatore
+205,CL00205,Elettro Lavori di Rossi Mario,Cliente,BO,RIBA60FM,RiBa,Installatore
+206,CL00206,Energia Service S.n.c.,Cliente,BO,RIBA90FM,RiBa,Industria
+207,CL00207,Termo Sistemi S.p.A.,Cliente,BO,RIBA90FM,RiBa,Installatore
+208,CL00208,Energia Point S.r.l.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+209,CL00209,Energia Italia S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+210,CL00210,Idro Group S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+211,CL00211,Idro Solar S.r.l.,Cliente,BO,RIBA120FM,RiBa,Installatore
+212,CL00212,Global Nord S.p.A.,Cliente,BO,RIBA60FM,RiBa,Industria
+213,CL00213,Impianti Sud S.p.A.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+214,CL00214,Tecno Point S.p.A.,Cliente,BO,RIBA90FM,RiBa,Installatore
+215,CL00215,Impianti & Figli S.r.l.,Cliente,BO,RIBA120FM,RiBa,Installatore
+216,CL00216,Idro Point S.p.A.,Cliente,BO,BB60DF,Bonifico,Impresa edile
+217,CL00217,Clima Sud S.n.c.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+218,CL00218,Clima Sud S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+219,CL00219,Edil Group S.r.l.,Cliente,BO,RIBA120FM,RiBa,Installatore
+220,CL00220,Global Nord S.n.c.,Cliente,BO,RIBA120FM,RiBa,Installatore
+221,CL00221,Elettro Point S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+222,CL00222,Energia Installazioni di Rossi Mario,Cliente,BO,RIBA120FM,RiBa,Installatore
+223,CL00223,Termo Centro S.r.l.,Cliente,BO,RIBA120FM,RiBa,Impresa edile
+224,CL00224,Clima Nord di Rossi Mario,Cliente,BO,BB30DF,Bonifico,Impresa edile
+225,CL00225,Global Solar S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+226,CL00226,Tecno Installazioni S.n.c.,Cliente,BO,BB60DF,Bonifico,Impresa edile
+227,CL00227,Energia Tecnica di Rossi Mario,Cliente,BO,RIBA90FM,RiBa,Industria
+228,CL00228,Idro Point S.r.l.s.,Cliente,BO,BB60DF,Bonifico,Rivenditore
+229,CL00229,Termo Lavori S.a.s.,Cliente,BO,BB30DF,Bonifico,Installatore
+230,CL00230,Edil & Figli S.n.c.,Cliente,BO,RIBA120FM,RiBa,Installatore
+231,CL00231,Impianti Service S.r.l.,Cliente,BO,BB30DF,Bonifico,Rivenditore
+232,CL00232,Impianti Sud di Rossi Mario,Cliente,BO,BB60DF,Bonifico,Installatore
+233,CL00233,Idro Impianti S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+234,CL00234,Termo Installazioni S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+235,CL00235,Idro Installazioni S.p.A.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+236,CL00236,Termo Progetti S.p.A.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+237,CL00237,Clima Sistemi S.r.l.,Cliente,BO,RIBA120FM,RiBa,Rivenditore
+238,CL00238,Idro Progetti S.r.l.,Cliente,BO,RD,Rimessa diretta,Installatore
+239,CL00239,Edil Installazioni di Rossi Mario,Cliente,BO,RIBA120FM,RiBa,Rivenditore
+240,CL00240,Impianti Installazioni S.r.l.,Cliente,BO,BB60DF,Bonifico,Rivenditore
+241,CL00241,Global Installazioni S.r.l.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+242,CL00242,Elettro Lavori S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+243,CL00243,Elettro Service S.n.c.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+244,CL00244,Tecno Service S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+245,CL00245,Elettro Sistemi S.n.c.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+246,CL00246,Clima Centro di Rossi Mario,Cliente,BO,RIBA60FM,RiBa,Installatore
+247,CL00247,Edil Nord di Rossi Mario,Cliente,BO,RIBA60FM,RiBa,Installatore
+248,CL00248,Termo Impianti S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+249,CL00249,Energia Point S.a.s.,Cliente,BO,RD,Rimessa diretta,Installatore
+250,CL00250,Energia Progetti S.r.l.,Cliente,BO,RIBA90FM,RiBa,Installatore
+251,CL00251,Idro Centro S.r.l.,Cliente,BO,RIBA120FM,RiBa,Impresa edile
+252,CL00252,Clima Progetti S.r.l.,Cliente,BO,BB60DF,Bonifico,Installatore
+253,CL00253,Tecno Group S.n.c.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+254,CL00254,Clima Impianti S.n.c.,Cliente,BO,BB60DF,Bonifico,Impresa edile
+255,CL00255,Idro & Figli S.r.l.s.,Cliente,BO,RIBA120FM,RiBa,Impresa edile
+256,CL00256,Edil Italia S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+257,CL00257,Tecno Service S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+258,CL00258,Clima Impianti S.r.l.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+259,CL00259,Termo Group S.r.l.,Cliente,BO,RIBA90FM,RiBa,Installatore
+260,CL00260,Energia Service S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+261,CL00261,Edil Nord S.n.c.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+262,CL00262,Elettro Group S.n.c.,Cliente,BO,BB30DF,Bonifico,Installatore
+263,CL00263,Casa Italia S.r.l.s.,Cliente,BO,BB60DF,Bonifico,Industria
+264,CL00264,Casa Tecnica di Rossi Mario,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+265,CL00265,Impianti Group S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+266,CL00266,Clima Tecnica S.a.s.,Cliente,BO,BB60DF,Bonifico,Installatore
+267,CL00267,Global Tecnica di Rossi Mario,Cliente,BO,RIBA120FM,RiBa,Installatore
+268,CL00268,Impianti Installazioni S.a.s.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+269,CL00269,Elettro Tecnica S.p.A.,Cliente,BO,RIBA90FM,RiBa,Installatore
+270,CL00270,Global & Figli di Rossi Mario,Cliente,BO,BB30DF,Bonifico,Installatore
+271,CL00271,Global Impianti S.a.s.,Cliente,BO,BB60DF,Bonifico,Impresa edile
+272,CL00272,Energia Tecnica S.r.l.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+273,CL00273,Casa Point S.a.s.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+274,CL00274,Termo Italia S.r.l.,Cliente,BO,RIBA60FM,RiBa,Installatore
+275,CL00275,Edil Point S.n.c.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+276,CL00276,Elettro Installazioni S.a.s.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+277,CL00277,Termo Group S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Industria
+278,CL00278,Energia & Figli S.n.c.,Cliente,BO,BB60DF,Bonifico,Installatore
+279,CL00279,Idro & Figli S.a.s.,Cliente,BO,BB30DF,Bonifico,Impresa edile
+280,CL00280,Casa Sistemi S.n.c.,Cliente,BO,RIBA90FM,RiBa,Installatore
+281,CL00281,Impianti Sud S.r.l.s.,Cliente,BO,BB30DF,Bonifico,Installatore
+282,CL00282,Edil Sud S.a.s.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+283,CL00283,Edil Impianti S.a.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+284,CL00284,Termo Impianti S.n.c.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+285,CL00285,Clima Nord S.r.l.s.,Cliente,BO,RD,Rimessa diretta,Impresa edile
+286,CL00286,Idro & Figli S.n.c.,Cliente,BO,RIBA90FM,RiBa,Industria
+287,CL00287,Casa & Figli S.n.c.,Cliente,BO,RIBA60FM,RiBa,Industria
+288,CL00288,Global Italia S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Installatore
+289,CL00289,Elettro Solar S.r.l.s.,Cliente,BO,BB60DF,Bonifico,Installatore
+290,CL00290,Clima Impianti S.r.l.s.,Cliente,BO,RIBA90FM,RiBa,Installatore
+291,CL00291,Termo Point S.r.l.,Cliente,BO,RIBA60FM,RiBa,Rivenditore
+292,CL00292,Elettro Sistemi S.r.l.s.,Cliente,BO,BB30DF,Bonifico,Rivenditore
+293,CL00293,Casa Progetti S.a.s.,Cliente,BO,BB60DF,Bonifico,Impresa edile
+294,CL00294,Idro Tecnica S.r.l.,Cliente,BO,RIBA90FM,RiBa,Installatore
+295,CL00295,Impianti Impianti S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Industria
+296,CL00296,Idro Nord S.r.l.s.,Cliente,BO,RIBA60FM,RiBa,Industria
+297,CL00297,Elettro Impianti S.r.l.,Cliente,BO,RIBA60FM,RiBa,Impresa edile
+298,CL00298,Tecno Nord di Rossi Mario,Cliente,BO,BB60DF,Bonifico,Rivenditore
+299,CL00299,Termo Tecnica S.r.l.,Cliente,BO,RIBA90FM,RiBa,Installatore
+300,CL00300,Elettro Italia S.n.c.,Cliente,BO,RIBA90FM,RiBa,Rivenditore
+301,CL00301,Tecno Installazioni S.r.l.,Cliente,BO,RIBA90FM,RiBa,Impresa edile
+302,CL00302,Casa Impianti di Rossi Mario,Cliente,BO,RIBA90FM,RiBa,Installatore
+303,CL00303,Casa Lavori S.p.A.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+304,CL00304,Elettro Lavori S.p.A.,Cliente,RM,RIBA90FM,RiBa,Installatore
+305,CL00305,Global Nord S.a.s.,Cliente,RM,RIBA60FM,RiBa,Industria
+306,CL00306,Elettro Installazioni S.p.A.,Cliente,RM,RIBA90FM,RiBa,Installatore
+307,CL00307,Edil Progetti S.a.s.,Cliente,RM,BB60DF,Bonifico,Rivenditore
+308,CL00308,Global Tecnica S.a.s.,Cliente,RM,RIBA120FM,RiBa,Rivenditore
+309,CL00309,Clima Group S.a.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+310,CL00310,Global Sistemi di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Industria
+311,CL00311,Elettro Point di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Installatore
+312,CL00312,Global Centro S.r.l.,Cliente,RM,RIBA60FM,RiBa,Installatore
+313,CL00313,Global Impianti S.r.l.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+314,CL00314,Edil Progetti di Rossi Mario,Cliente,RM,BB30DF,Bonifico,Installatore
+315,CL00315,Impianti Sud S.r.l.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+316,CL00316,Impianti Sistemi S.r.l.,Cliente,RM,RIBA60FM,RiBa,Installatore
+317,CL00317,Edil & Figli di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Industria
+318,CL00318,Elettro Solar S.a.s.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+319,CL00319,Casa Lavori di Rossi Mario,Cliente,RM,BB60DF,Bonifico,Installatore
+320,CL00320,Clima Lavori S.p.A.,Cliente,RM,RIBA60FM,RiBa,Installatore
+321,CL00321,Casa Sistemi S.a.s.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+322,CL00322,Idro Sud S.r.l.s.,Cliente,RM,BB60DF,Bonifico,Industria
+323,CL00323,Global Installazioni di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Industria
+324,CL00324,Tecno Nord S.n.c.,Cliente,RM,RIBA90FM,RiBa,Installatore
+325,CL00325,Edil Service di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+326,CL00326,Edil Group S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Industria
+327,CL00327,Tecno Group di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+328,CL00328,Tecno Service S.a.s.,Cliente,RM,RIBA90FM,RiBa,Industria
+329,CL00329,Clima Solar S.p.A.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+330,CL00330,Termo Impianti S.p.A.,Cliente,RM,RIBA60FM,RiBa,Installatore
+331,CL00331,Edil Centro S.a.s.,Cliente,RM,BB60DF,Bonifico,Industria
+332,CL00332,Idro Point di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+333,CL00333,Global Group S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+334,CL00334,Tecno Tecnica S.r.l.,Cliente,RM,RIBA60FM,RiBa,Installatore
+335,CL00335,Impianti Solar S.a.s.,Cliente,RM,RIBA120FM,RiBa,Rivenditore
+336,CL00336,Clima Installazioni S.r.l.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+337,CL00337,Tecno Impianti S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+338,CL00338,Global Service di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+339,CL00339,Casa Group S.n.c.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+340,CL00340,Clima Italia di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Industria
+341,CL00341,Idro Sud S.r.l.,Cliente,RM,RIBA60FM,RiBa,Installatore
+342,CL00342,Clima Service di Rossi Mario,Cliente,RM,BB30DF,Bonifico,Industria
+343,CL00343,Impianti Nord S.a.s.,Cliente,RM,RD,Rimessa diretta,Industria
+344,CL00344,Edil Nord S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Installatore
+345,CL00345,Energia Centro S.n.c.,Cliente,RM,BB30DF,Bonifico,Rivenditore
+346,CL00346,Global Installazioni S.p.A.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+347,CL00347,Energia Italia di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Installatore
+348,CL00348,Clima Group S.p.A.,Cliente,RM,BB60DF,Bonifico,Rivenditore
+349,CL00349,Energia & Figli S.p.A.,Cliente,RM,BB60DF,Bonifico,Rivenditore
+350,CL00350,Edil Service S.n.c.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+351,CL00351,Casa Solar S.p.A.,Cliente,RM,RIBA120FM,RiBa,Installatore
+352,CL00352,Idro Point S.r.l.,Cliente,RM,RIBA90FM,RiBa,Industria
+353,CL00353,Casa Installazioni S.r.l.,Cliente,RM,RIBA90FM,RiBa,Installatore
+354,CL00354,Clima Sistemi di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+355,CL00355,Edil Lavori S.r.l.s.,Cliente,RM,BB60DF,Bonifico,Installatore
+356,CL00356,Global Sistemi S.r.l.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+357,CL00357,Global Group di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Installatore
+358,CL00358,Energia Solar S.r.l.,Cliente,RM,RIBA120FM,RiBa,Rivenditore
+359,CL00359,Idro Tecnica S.p.A.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+360,CL00360,Casa Impianti S.n.c.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+361,CL00361,Elettro Progetti S.p.A.,Cliente,RM,RIBA120FM,RiBa,Installatore
+362,CL00362,Elettro Centro S.r.l.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+363,CL00363,Edil Sistemi S.a.s.,Cliente,RM,RIBA90FM,RiBa,Industria
+364,CL00364,Tecno Nord S.r.l.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+365,CL00365,Global Lavori S.r.l.s.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+366,CL00366,Termo Sistemi S.a.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+367,CL00367,Termo Sistemi S.r.l.s.,Cliente,RM,BB30DF,Bonifico,Installatore
+368,CL00368,Casa Point S.p.A.,Cliente,RM,RIBA120FM,RiBa,Rivenditore
+369,CL00369,Energia Group di Rossi Mario,Cliente,RM,BB60DF,Bonifico,Installatore
+370,CL00370,Idro Centro S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Industria
+371,CL00371,Global Italia S.n.c.,Cliente,RM,RIBA90FM,RiBa,Installatore
+372,CL00372,Casa Progetti S.r.l.,Cliente,RM,RIBA90FM,RiBa,Industria
+373,CL00373,Tecno Progetti S.n.c.,Cliente,RM,BB60DF,Bonifico,Rivenditore
+374,CL00374,Termo Lavori di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Installatore
+375,CL00375,Elettro Point S.n.c.,Cliente,RM,RIBA60FM,RiBa,Installatore
+376,CL00376,Energia Sistemi S.r.l.,Cliente,RM,RIBA120FM,RiBa,Impresa edile
+377,CL00377,Impianti Sistemi S.p.A.,Cliente,RM,RIBA90FM,RiBa,Industria
+378,CL00378,Energia & Figli S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+379,CL00379,Energia Nord S.r.l.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+380,CL00380,Global & Figli S.n.c.,Cliente,RM,RD,Rimessa diretta,Installatore
+381,CL00381,Global Service S.r.l.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+382,CL00382,Impianti & Figli S.a.s.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+383,CL00383,Termo Italia S.p.A.,Cliente,RM,BB30DF,Bonifico,Impresa edile
+384,CL00384,Energia Group S.a.s.,Cliente,RM,RIBA60FM,RiBa,Installatore
+385,CL00385,Edil Group S.a.s.,Cliente,RM,RIBA60FM,RiBa,Installatore
+386,CL00386,Casa Lavori S.r.l.,Cliente,RM,BB60DF,Bonifico,Rivenditore
+387,CL00387,Tecno Point S.a.s.,Cliente,RM,RD,Rimessa diretta,Installatore
+388,CL00388,Elettro Sud di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+389,CL00389,Clima Installazioni S.r.l.s.,Cliente,RM,RIBA90FM,RiBa,Rivenditore
+390,CL00390,Elettro Group S.r.l.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+391,CL00391,Energia & Figli S.a.s.,Cliente,RM,BB60DF,Bonifico,Industria
+392,CL00392,Tecno Sud S.r.l.s.,Cliente,RM,RIBA60FM,RiBa,Installatore
+393,CL00393,Clima Tecnica S.r.l.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+394,CL00394,Idro Nord S.r.l.,Cliente,RM,BB60DF,Bonifico,Industria
+395,CL00395,Termo Installazioni S.r.l.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+396,CL00396,Edil Sud S.n.c.,Cliente,RM,RIBA60FM,RiBa,Impresa edile
+397,CL00397,Global Sistemi S.n.c.,Cliente,RM,RIBA60FM,RiBa,Installatore
+398,CL00398,Elettro Centro di Rossi Mario,Cliente,RM,RIBA90FM,RiBa,Installatore
+399,CL00399,Termo Service S.a.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+400,CL00400,Energia Point S.n.c.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+401,CL00401,Clima Nord S.r.l.,Cliente,RM,BB30DF,Bonifico,Industria
+402,CL00402,Clima Impianti di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Industria
+403,CL00403,Impianti Sistemi di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Installatore
+404,CL00404,Idro Lavori S.r.l.,Cliente,RM,RIBA90FM,RiBa,Installatore
+405,CL00405,Elettro Sistemi S.p.A.,Cliente,RM,BB60DF,Bonifico,Industria
+406,CL00406,Edil Point S.r.l.,Cliente,RM,RIBA90FM,RiBa,Impresa edile
+407,CL00407,Termo Installazioni S.n.c.,Cliente,RM,BB60DF,Bonifico,Installatore
+408,CL00408,Elettro Progetti S.n.c.,Cliente,RM,RIBA90FM,RiBa,Installatore
+409,CL00409,Edil Tecnica S.n.c.,Cliente,RM,RIBA120FM,RiBa,Installatore
+410,CL00410,Global Service S.a.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+411,CL00411,Global Service S.p.A.,Cliente,RM,BB60DF,Bonifico,Installatore
+412,CL00412,Casa Group S.a.s.,Cliente,RM,RIBA60FM,RiBa,Rivenditore
+413,CL00413,Edil Tecnica S.p.A.,Cliente,RM,BB30DF,Bonifico,Impresa edile
+414,CL00414,Casa Nord S.r.l.,Cliente,RM,RIBA90FM,RiBa,Installatore
+415,CL00415,Impianti Installazioni di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Installatore
+416,CL00416,Idro Installazioni di Rossi Mario,Cliente,RM,RIBA60FM,RiBa,Industria
+417,CL00417,Impianti Service di Rossi Mario,Cliente,RM,BB60DF,Bonifico,Rivenditore
+418,CL00418,Global Centro di Rossi Mario,Cliente,RM,BB60DF,Bonifico,Rivenditore
+419,CL00419,Tecno Point S.n.c.,Cliente,RM,RIBA60FM,RiBa,Installatore
+420,CL00420,Edil Service S.r.l.s.,Cliente,RM,RIBA90FM,RiBa,Installatore
+421,CL00421,Global Lavori S.r.l.,Cliente,,BB60DF,Bonifico,Installatore
+422,CL00422,Edil Nord S.p.A.,Cliente,,RIBA90FM,RiBa,Installatore
+423,CL00423,Elettro Centro S.p.A.,Cliente,,BB60DF,Bonifico,Rivenditore
+424,CL00424,Casa Group di Rossi Mario,Cliente,,RIBA60FM,RiBa,Impresa edile
+425,CL00425,Impianti & Figli S.n.c.,Cliente,,RIBA60FM,RiBa,Installatore
+426,CL00426,Edil Progetti S.p.A.,Cliente,,RIBA90FM,RiBa,Installatore
+427,CL00427,Termo Group S.p.A.,Cliente,,RD,Rimessa diretta,Industria
+428,CL00428,Impianti Installazioni S.n.c.,Cliente,,RIBA60FM,RiBa,Installatore
+429,CL00429,Energia Group S.p.A.,Cliente,,RIBA90FM,RiBa,Installatore
+430,CL00430,Global & Figli S.a.s.,Cliente,,RIBA60FM,RiBa,Installatore
+431,CL00431,Edil Impianti di Rossi Mario,Cliente,,BB60DF,Bonifico,Installatore
+432,CL00432,Impianti Lavori S.n.c.,Cliente,,RIBA90FM,RiBa,Installatore
+433,CL00433,Impianti Group S.n.c.,Cliente,,RIBA90FM,RiBa,Impresa edile
+434,CL00434,Clima Sistemi S.r.l.s.,Cliente,,BB30DF,Bonifico,Rivenditore
+435,CL00435,Edil Service S.r.l.,Cliente,,RIBA60FM,RiBa,Impresa edile
+436,CL00436,Casa Nord S.p.A.,Cliente,,RIBA60FM,RiBa,Rivenditore
+437,CL00437,Termo Italia di Rossi Mario,Cliente,,BB60DF,Bonifico,Installatore
+438,CL00438,Energia Sud di Rossi Mario,Cliente,,RIBA60FM,RiBa,Installatore
+439,CL00439,Global Nord S.r.l.,Cliente,,RIBA60FM,RiBa,Installatore
+440,CL00440,Edil Solar S.p.A.,Cliente,,BB30DF,Bonifico,Installatore
+441,CL00441,Termo Centro S.n.c.,Cliente,,RIBA90FM,RiBa,Installatore
+442,CL00442,Tecno Solar di Rossi Mario,Cliente,,RIBA60FM,RiBa,Installatore
+443,CL00443,Edil Lavori di Rossi Mario,Cliente,,RIBA90FM,RiBa,Installatore
+444,CL00444,Clima Sistemi S.a.s.,Cliente,,BB60DF,Bonifico,Rivenditore
+445,CL00445,Impianti Impianti S.a.s.,Cliente,,RIBA90FM,RiBa,Rivenditore
+446,CL00446,Elettro Installazioni S.r.l.,Cliente,,RIBA60FM,RiBa,Installatore
+447,CL00447,Global Solar S.p.A.,Cliente,,BB60DF,Bonifico,Impresa edile
+448,CL00448,Casa Service S.n.c.,Cliente,,RD,Rimessa diretta,Industria
+449,CL00449,Edil Italia S.n.c.,Cliente,,RIBA120FM,RiBa,Installatore
+450,CL00450,Idro Italia S.n.c.,Cliente,,RIBA90FM,RiBa,Installatore
+451,CL00451,Edil Sud S.r.l.s.,Cliente,,BB60DF,Bonifico,Installatore
+452,CL00452,Termo Sistemi di Rossi Mario,Cliente,,RIBA60FM,RiBa,Rivenditore
+453,CL00453,Termo Lavori S.r.l.,Cliente,,RIBA90FM,RiBa,Impresa edile
+454,CL00454,Edil Solar S.n.c.,Cliente,,RIBA90FM,RiBa,Installatore
+455,CL00455,Casa Lavori S.n.c.,Cliente,,RIBA90FM,RiBa,Impresa edile
+456,CL00456,Elettro Italia S.r.l.s.,Cliente,,RIBA90FM,RiBa,Installatore
+457,CL00457,Termo Solar S.r.l.s.,Cliente,,RIBA60FM,RiBa,Installatore
+458,CL00458,Energia Sud S.r.l.s.,Cliente,,RIBA120FM,RiBa,Installatore
+459,CL00459,Clima Impianti S.a.s.,Cliente,,RIBA120FM,RiBa,Installatore
+460,CL00460,Elettro Lavori S.n.c.,Cliente,,BB30DF,Bonifico,Impresa edile
+461,CL00461,Global Centro S.a.s.,Cliente,,RIBA90FM,RiBa,Impresa edile
+462,CL00462,Energia Lavori S.r.l.s.,Cliente,,RIBA90FM,RiBa,Impresa edile
+463,CL00463,Idro Tecnica di Rossi Mario,Cliente,,RIBA60FM,RiBa,Rivenditore
+464,CL00464,Casa Point S.n.c.,Cliente,,BB30DF,Bonifico,Installatore
+465,CL00465,Clima Italia S.n.c.,Cliente,,RIBA60FM,RiBa,Rivenditore
+466,CL00466,Casa Solar S.r.l.s.,Cliente,,BB30DF,Bonifico,Impresa edile
+467,CL00467,Energia Sud S.p.A.,Cliente,,RIBA90FM,RiBa,Installatore
+468,CL00468,Elettro & Figli S.r.l.s.,Cliente,,RIBA120FM,RiBa,Industria
+469,CL00469,Tecno Progetti S.r.l.s.,Cliente,,RIBA90FM,RiBa,Installatore
+470,CL00470,Termo Service S.r.l.,Cliente,,RIBA60FM,RiBa,Impresa edile
+471,CL00471,Tecno Installazioni S.r.l.s.,Cliente,,RIBA60FM,RiBa,Installatore
+472,CL00472,Idro Nord S.p.A.,Cliente,,BB60DF,Bonifico,Impresa edile
+473,CL00473,Clima Service S.p.A.,Cliente,,RIBA120FM,RiBa,Installatore
+474,CL00474,Elettro Point S.p.A.,Cliente,,RIBA60FM,RiBa,Installatore
+475,CL00475,Global Point S.n.c.,Cliente,,RIBA60FM,RiBa,Impresa edile
+476,CL00476,Energia Nord S.a.s.,Cliente,,RIBA60FM,RiBa,Rivenditore
+477,CL00477,Tecno Lavori S.r.l.,Cliente,,RIBA90FM,RiBa,Installatore
+478,CL00478,Tecno & Figli S.a.s.,Cliente,,RIBA120FM,RiBa,Rivenditore
+479,CL00479,Casa Sistemi S.r.l.,Cliente,,RIBA90FM,RiBa,Installatore
+480,CL00480,Global Centro S.p.A.,Cliente,,BB60DF,Bonifico,Installatore
+481,CL00481,Impianti Solar S.r.l.s.,Cliente,,RIBA90FM,RiBa,Impresa edile
+482,CL00482,Impianti Italia S.p.A.,Cliente,,BB30DF,Bonifico,Industria
+483,CL00483,Clima Nord S.a.s.,Cliente,,BB60DF,Bonifico,Installatore
+484,CL00484,Global Point S.a.s.,Cliente,,RIBA90FM,RiBa,Rivenditore
+485,CL00485,Casa Centro S.r.l.,Cliente,,RIBA60FM,RiBa,Rivenditore
+486,CL00486,Tecno Tecnica di Rossi Mario,Cliente,,RD,Rimessa diretta,Installatore
+487,CL00487,Tecno Tecnica S.r.l.s.,Cliente,,BB60DF,Bonifico,Installatore
+488,CL00488,Edil Installazioni S.a.s.,Cliente,,RIBA90FM,RiBa,Installatore
+489,CL00489,Edil Centro di Rossi Mario,Cliente,,RIBA90FM,RiBa,Rivenditore
+490,CL00490,Idro Impianti S.r.l.,Cliente,,RIBA90FM,RiBa,Installatore
+491,CL00491,Elettro Solar S.r.l.,Cliente,,BB30DF,Bonifico,Rivenditore
+492,CL00492,Casa Solar di Rossi Mario,Cliente,,RIBA60FM,RiBa,Impresa edile
+493,CL00493,Tecno Service S.p.A.,Cliente,,RIBA90FM,RiBa,Industria
+494,CL00494,Energia Impianti S.r.l.,Cliente,,RIBA60FM,RiBa,Installatore
+495,CL00495,Energia Progetti S.p.A.,Cliente,,RIBA90FM,RiBa,Impresa edile
+496,CL00496,Impianti Lavori S.r.l.s.,Cliente,,BB30DF,Bonifico,Installatore
+497,CL00497,Clima Installazioni S.a.s.,Cliente,,RIBA60FM,RiBa,Installatore
+498,CL00498,Energia Tecnica S.p.A.,Cliente,,RIBA90FM,RiBa,Installatore
+499,CL00499,Global Point S.r.l.,Cliente,,RIBA60FM,RiBa,Rivenditore
+500,CL00500,Edil Centro S.r.l.s.,Cliente,,BB60DF,Bonifico,Impresa edile
+501,CL00501,Energia Centro S.r.l.s.,Cliente,,RIBA120FM,RiBa,Installatore
+502,CL00502,Termo Installazioni di Rossi Mario,Cliente,,RIBA60FM,RiBa,Industria
+503,CL00503,Tecno Nord S.p.A.,Cliente,,RIBA60FM,RiBa,Installatore
+504,CL00504,Idro Tecnica S.n.c.,Cliente,,RIBA60FM,RiBa,Impresa edile
+505,CL00505,Idro Progetti S.n.c.,Cliente,,RIBA120FM,RiBa,Rivenditore
+506,CL00506,Energia Italia S.r.l.,Cliente,,RIBA60FM,RiBa,Impresa edile
+507,CL00507,Clima Tecnica S.r.l.s.,Cliente,,RIBA90FM,RiBa,Impresa edile
+508,CL00508,Idro Group S.a.s.,Cliente,,RIBA60FM,RiBa,Rivenditore
+509,FO0001,ABB S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+510,FO0002,Schneider Electric S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+511,FO0003,BTicino S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+512,FO0004,Vimar S.p.A.,Fornitore merce,MI,RIBA90FM,RiBa,n.a.
+513,FO0005,Gewiss S.p.A.,Fornitore merce,MI,BB60FM,Bonifico,n.a.
+514,FO0006,Prysmian Cavi e Sistemi Italia S.r.l.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+515,FO0007,Legrand Italia S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+516,FO0008,Siemens S.p.A.,Fornitore merce,MI,BB120FM,Bonifico,n.a.
+517,FO0009,Ariston S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+518,FO0010,Baxi S.p.A.,Fornitore merce,MI,BB120FM,Bonifico,n.a.
+519,FO0011,Daikin Air Conditioning Italy S.p.A.,Fornitore merce,MI,BB120FM,Bonifico,n.a.
+520,FO0012,Grundfos Pompe Italia S.r.l.,Fornitore merce,MI,RIBA90FM,RiBa,n.a.
+521,FO0013,Caleffi S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+522,FO0014,Giacomini S.p.A.,Fornitore merce,MI,BB60FM,Bonifico,n.a.
+523,FO0015,Valsir S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+524,FO0016,Geberit Marketing e Distribuzione S.r.l.,Fornitore merce,MI,RIBA90FM,RiBa,n.a.
+525,FO0017,Philips Lighting Italy S.p.A.,Fornitore merce,MI,RIBA90FM,RiBa,n.a.
+526,FO0018,Disano Illuminazione S.p.A.,Fornitore merce,MI,BB60FM,Bonifico,n.a.
+527,FO0019,Finder S.p.A.,Fornitore merce,MI,BB120FM,Bonifico,n.a.
+528,FO0020,Hager Bocchiotti S.p.A.,Fornitore merce,MI,BB90FM,Bonifico,n.a.
+529,FS0001,Studio Commercialista Bianchi,Fornitore servizi,BO,BB30FM,Bonifico,n.a.
+530,FS0002,Arcese Trasporti S.p.A.,Fornitore servizi,,RD,Rimessa diretta,n.a.
+531,FS0003,BRT S.p.A.,Fornitore servizi,RM,BB30DF,Bonifico,n.a.
+532,FS0004,Enel Energia S.p.A.,Fornitore servizi,MI,BB30FM,Bonifico,n.a.
+533,FS0005,A2A Energia S.p.A.,Fornitore servizi,BO,RD,Rimessa diretta,n.a.
+534,FS0006,TIM S.p.A.,Fornitore servizi,BO,BB30DF,Bonifico,n.a.
+535,FS0007,Vodafone Italia S.p.A.,Fornitore servizi,,BB30FM,Bonifico,n.a.
+536,FS0008,Securitas Italia S.r.l.,Fornitore servizi,RM,BB60DF,Bonifico,n.a.
+537,FS0009,Pulizie Industriali Emilia S.r.l.,Fornitore servizi,RM,BB30FM,Bonifico,n.a.
+538,FS0010,Zucchetti S.p.A.,Fornitore servizi,RM,BB60DF,Bonifico,n.a.
+539,FS0011,Manpower S.r.l.,Fornitore servizi,BO,RD,Rimessa diretta,n.a.
+540,FS0012,Assicurazioni Generali S.p.A.,Fornitore servizi,BO,RD,Rimessa diretta,n.a.
+541,FS0013,Studio Legale Moretti,Fornitore servizi,MI,BB30DF,Bonifico,n.a.
+542,FS0014,Officina Mezzi Pesanti Rossi S.r.l.,Fornitore servizi,,BB60DF,Bonifico,n.a.
+543,FS0015,Kuehne+Nagel S.r.l.,Fornitore servizi,BO,RD,Rimessa diretta,n.a.
+544,FS0016,Q8 Italia S.p.A.,Fornitore servizi,BO,BB30FM,Bonifico,n.a.
+545,AL0001,Erario - Agenzia delle Entrate,Erario,MI,n.a.,n.a.,n.a.
+546,AL0002,INPS / Enti previdenziali,Enti,MI,n.a.,n.a.,n.a.
+547,AL0003,Dipendenti,Personale,MI,n.a.,n.a.,n.a.
+548,AL0004,Immobiliare Lombarda S.r.l.,Locatore,MI,n.a.,n.a.,n.a.
+549,AL0005,Fondo Immobiliare Emilia,Locatore,MI,n.a.,n.a.,n.a.
+550,AL0006,Gestioni Immobiliari Capitolina S.r.l.,Locatore,MI,n.a.,n.a.,n.a.
+551,AL0007,Partenope Real Estate S.r.l.,Locatore,MI,n.a.,n.a.,n.a.
+552,AL0008,Intesa Sanpaolo - finanziamenti,Banca,MI,n.a.,n.a.,n.a.
+553,AL0009,UniCredit - finanziamenti,Banca,MI,n.a.,n.a.,n.a.
+554,AL0010,BNP Paribas Leasing Solutions,Leasing,MI,n.a.,n.a.,n.a.
+555,AL0011,Soci,Soci,MI,n.a.,n.a.,n.a.
+556,AL0012,Banca (spese e commissioni),Banca,MI,n.a.,n.a.,n.a.

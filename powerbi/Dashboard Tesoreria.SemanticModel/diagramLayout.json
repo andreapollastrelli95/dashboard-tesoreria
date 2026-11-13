@@ -1,0 +1,178 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1322.3168154581115,
+            "y": 818.57774980076306
+          },
+          "nodeIndex": "AlertList",
+          "nodeLineageTag": "f68fcd31-6d34-57f9-a3cb-437e526e22eb",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 651.68109778613052,
+            "y": 1212.1288543452767
+          },
+          "nodeIndex": "BankAccount",
+          "nodeLineageTag": "c8e227f9-0c28-53dc-80bb-f702e3a26bc9",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 917.29219885707835,
+            "y": 859.41381046859988
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "b36966db-d0d0-55af-8089-7f777e1e7476",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 281.77932549474622
+          },
+          "nodeIndex": "CashCategory",
+          "nodeLineageTag": "1dce5812-b792-5275-b4b7-9ccf78340ec5",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 255.90622912265684,
+            "y": -50
+          },
+          "nodeIndex": "Counterparty",
+          "nodeLineageTag": "d7ed0931-1a44-5f6d-9c5b-493f3fd9a2be",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 548.60760494441888,
+            "y": 266.7507824330612
+          },
+          "nodeIndex": "FactAPInvoice",
+          "nodeLineageTag": "6a805642-b5d6-5e69-86a1-a8907d87d02a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 841.35816889714431,
+            "y": 54.435994525443675
+          },
+          "nodeIndex": "FactARInvoice",
+          "nodeLineageTag": "34b2cb94-a853-57a2-bc8e-95fd604f8472",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1088.3168154581113,
+            "y": 1283.1691251991597
+          },
+          "nodeIndex": "FactBankBalanceDaily",
+          "nodeLineageTag": "ee0fd036-b340-58ad-a035-26cd6d2ab965",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 390.386834408817,
+            "y": 627.53270764325657
+          },
+          "nodeIndex": "FactBankTransaction",
+          "nodeLineageTag": "441df411-a728-5be7-9a32-30f978a5974d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 818.29707805703879,
+            "y": 1539.1554996015259
+          },
+          "nodeIndex": "FactCashForecast",
+          "nodeLineageTag": "2ef178f2-38cc-5099-bf34-d6e78c0d1e6c",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 839.648497045219,
+            "y": 601.113476428333
+          },
+          "nodeIndex": "Site",
+          "nodeLineageTag": "1f31d742-b302-5be2-a364-268bebc3de19",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1606.3168154581115,
+            "y": 794.57774980076306
+          },
+          "nodeIndex": "TreasuryParameter",
+          "nodeLineageTag": "6e4b9b2f-804c-54c8-97de-9634052019c2",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Tutte le tabelle",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Tutte le tabelle",
+  "defaultDiagram": "Tutte le tabelle"
+}

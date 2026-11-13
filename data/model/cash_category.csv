@@ -1,0 +1,21 @@
+CashCategoryKey,CategoryCode,CategoryName,CashFlowSection,SectionSort,Direction,CategoryGroup
+1,IN01,Incassi da clienti,Operativa,1,Entrata,Incassi commerciali
+2,IN02,Insoluti RiBa,Operativa,1,Uscita,Incassi commerciali
+3,IN03,Altri incassi,Operativa,1,Entrata,Altri
+4,OU01,Pagamenti fornitori merce,Operativa,1,Uscita,Fornitori
+5,OU02,Pagamenti fornitori servizi,Operativa,1,Uscita,Fornitori
+6,OU03,Stipendi netti,Operativa,1,Uscita,Personale
+7,OU04,F24 contributi e ritenute,Operativa,1,Uscita,Personale
+8,OU05,F24 IVA,Operativa,1,Uscita,Imposte
+9,OU06,F24 imposte dirette (IRES/IRAP),Operativa,1,Uscita,Imposte
+10,OU07,Affitti,Operativa,1,Uscita,Costi di struttura
+11,OU08,Utenze,Operativa,1,Uscita,Costi di struttura
+12,OU09,Commissioni e spese bancarie,Operativa,1,Uscita,Oneri bancari
+13,IV01,Investimenti (capex),Investimento,2,Uscita,Investimenti
+14,FI01,Erogazione finanziamenti,Finanziamento,3,Entrata,Debito bancario
+15,FI02,Rimborso quota capitale mutui,Finanziamento,3,Uscita,Debito bancario
+16,FI03,Interessi passivi,Finanziamento,3,Uscita,Debito bancario
+17,FI04,Canoni leasing,Finanziamento,3,Uscita,Leasing
+18,FI05,Dividendi distribuiti,Finanziamento,3,Uscita,Soci
+19,TR01,Giroconto in entrata,Giroconto,4,Entrata,Giroconti
+20,TR02,Giroconto in uscita,Giroconto,4,Uscita,Giroconti

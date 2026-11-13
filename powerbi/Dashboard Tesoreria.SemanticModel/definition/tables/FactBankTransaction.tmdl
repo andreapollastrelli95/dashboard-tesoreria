@@ -1,0 +1,628 @@
+table FactBankTransaction
+	lineageTag: 441df411-a728-5be7-9a32-30f978a5974d
+
+	measure 'As Of Date' = CALCULATE ( MAX ( FactCashForecast[AsOfDate] ), REMOVEFILTERS ( 'Calendar' ) )
+		displayFolder: 01 Data riferimento
+		lineageTag: c9a00804-a236-4563-81d3-164813f5082c
+
+	measure 'Report Date' =
+			VAR _MaxSelected = MAX ( 'Calendar'[Date] )
+			RETURN MIN ( _MaxSelected, [As Of Date] )
+		displayFolder: 01 Data riferimento
+		lineageTag: 263c2805-8c6a-49d5-9139-9b8efb22514f
+
+	measure 'Min Cash Threshold' = MAX ( TreasuryParameter[MinCashThreshold] )
+		formatString: #,0
+		displayFolder: 01 Data riferimento
+		lineageTag: 5227b106-ba98-415f-a00e-b8c6f146789b
+
+	measure 'Cash Inflows' = CALCULATE ( SUM ( FactBankTransaction[InflowAmount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: 99180a94-cf75-430f-994c-d884f984ebcb
+
+	measure 'Cash Outflows' = CALCULATE ( SUM ( FactBankTransaction[OutflowAmount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: 873a67cb-3605-4d2a-88ca-f1a149b0d643
+
+	measure 'Net Cash Flow' = CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] <> "Giroconto" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: fd3e230c-fa38-48bf-beeb-a72bac45d0f6
+
+	measure 'Operating Cash Flow' = CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Operativa" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: cd7d0f17-7e7f-406e-9af6-0c7b93a2e3ee
+
+	measure 'Investing Cash Flow' = CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Investimento" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: 043221ac-81af-44a6-a529-348b2a641ff0
+
+	measure 'Financing Cash Flow' = CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CashFlowSection] = "Finanziamento" )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: 5e2ba6d0-28ca-4b6a-8923-db5aa27eca01
+
+	measure 'Free Cash Flow' = [Operating Cash Flow] + [Investing Cash Flow]
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: e9a7e055-742b-470a-88ef-8775a1136450
+
+	measure 'Customer Receipts' = CALCULATE ( SUM ( FactBankTransaction[Amount] ), CashCategory[CategoryCode] IN { "IN01", "IN02" } )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: fc8373bd-18e6-491a-8ff3-bec35b61bb00
+
+	measure 'Operating Cash Flow PY' = CALCULATE ( [Operating Cash Flow], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: ccc9297e-5541-4284-ba88-9d9dde3b2373
+
+	measure 'Operating Cash Flow YoY' = [Operating Cash Flow] - [Operating Cash Flow PY]
+		formatString: #,0
+		displayFolder: 02 Flussi
+		lineageTag: e812184f-221c-49da-92f3-5b54e8f85d0a
+
+	measure 'Closing Cash' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 174c0096-6276-44c3-b63f-d0a247fbdb39
+
+	measure 'Opening Cash' =
+			VAR _First = MIN ( 'Calendar'[Date] )
+			RETURN
+			    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _First - 1 )
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 875bbc6e-7638-4bb6-a8e6-ccf1ae082fa0
+
+	measure 'Cash Movement Check' = [Opening Cash] + [Net Cash Flow] - [Closing Cash]
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 06852a80-a3a3-4b4d-8be4-cad939784bda
+
+	measure 'Daily Cash Position' =
+			VAR _D = MAX ( 'Calendar'[Date] )
+			RETURN
+			    IF (
+			        _D <= [As Of Date],
+			        CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+			    )
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 42763993-3bd3-4fe3-95fa-90c5d3bc5de0
+
+	measure 'Min Daily Cash' =
+			MINX (
+			    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+			    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+			)
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 311589c8-a416-413f-8dda-31a0711d11d7
+
+	measure 'Max Daily Cash' =
+			MAXX (
+			    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+			    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+			)
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 3965e73c-7e89-49a4-a891-26d22cb1a3f1
+
+	measure 'Avg Daily Cash' =
+			AVERAGEX (
+			    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+			    CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) )
+			)
+		formatString: #,0
+		displayFolder: 03 Saldi
+		lineageTag: 4ed61dff-41a5-4ffd-b0c1-bcecf58bf21a
+
+	measure 'Days Below Threshold' =
+			COUNTROWS (
+			    FILTER (
+			        VALUES ( 'Calendar'[Date] ),
+			        'Calendar'[Date] <= [As Of Date]
+			            && CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ) ) < [Min Cash Threshold]
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: 03 Saldi
+		lineageTag: 828a0fd8-e02c-424c-8531-a7ec7b0a97ed
+
+	measure 'Liquidity Days' =
+			VAR _D = [Report Date]
+			VAR _AvgDailyOut =
+			    DIVIDE (
+			        CALCULATE (
+			            SUM ( FactBankTransaction[OutflowAmount] ),
+			            CashCategory[CashFlowSection] = "Operativa",
+			            DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+			        ),
+			        90
+			    )
+			RETURN DIVIDE ( [Closing Cash], _AvgDailyOut )
+		formatString: #,0.0
+		displayFolder: 03 Saldi
+		lineageTag: 5e9d0878-9164-4469-a981-d3ef87e533b9
+
+	measure 'Credit Lines' =
+			VAR _D = [Report Date]
+			RETURN CALCULATE ( SUM ( FactBankBalanceDaily[CreditLine] ), 'Calendar'[Date] = _D )
+		formatString: #,0
+		displayFolder: 04 Affidamenti
+		lineageTag: 6b4eacb4-e207-4577-9fdc-27b7f7a3eeef
+
+	measure 'Credit Line Used' =
+			VAR _D = [Report Date]
+			RETURN
+			    SUMX (
+			        VALUES ( BankAccount[BankAccountKey] ),
+			        VAR _Bal = CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+			        RETURN IF ( _Bal < 0, -_Bal, 0 )
+			    )
+		formatString: #,0
+		displayFolder: 04 Affidamenti
+		lineageTag: 09101618-ccc8-44de-91a5-6f60958107b8
+
+	measure 'Credit Line Usage %' = DIVIDE ( [Credit Line Used], [Credit Lines] )
+		formatString: 0.0%
+		displayFolder: 04 Affidamenti
+		lineageTag: 93e3f0a6-8e74-487e-925b-5956175c3762
+
+	measure 'Peak Credit Line Usage %' =
+			MAXX (
+			    FILTER ( VALUES ( 'Calendar'[Date] ), 'Calendar'[Date] <= [As Of Date] ),
+			    VAR _D = 'Calendar'[Date]
+			    RETURN
+			        DIVIDE (
+			            SUMX (
+			                VALUES ( BankAccount[BankAccountKey] ),
+			                VAR _Bal = CALCULATE ( SUM ( FactBankBalanceDaily[ClosingBalance] ), 'Calendar'[Date] = _D )
+			                RETURN IF ( _Bal < 0, -_Bal, 0 )
+			            ),
+			            CALCULATE ( SUM ( FactBankBalanceDaily[CreditLine] ), 'Calendar'[Date] = _D )
+			        )
+			)
+		formatString: 0.0%
+		displayFolder: 04 Affidamenti
+		lineageTag: 331da164-9675-42b4-9683-58b88982af9e
+
+	measure 'Available Liquidity' =
+			VAR _D = [Report Date]
+			RETURN CALCULATE ( SUM ( FactBankBalanceDaily[AvailableFunds] ), 'Calendar'[Date] = _D )
+		formatString: #,0
+		displayFolder: 04 Affidamenti
+		lineageTag: 5884a6f1-19fb-4392-b64c-dbbeeb622fa2
+
+	measure 'Outstanding Receivables' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactARInvoice[GrossAmount] ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        FactARInvoice[InvoiceDate] <= _D,
+			        FILTER (
+			            ALL ( FactARInvoice[PaymentDate] ),
+			            ISBLANK ( FactARInvoice[PaymentDate] ) || FactARInvoice[PaymentDate] > _D
+			        )
+			    )
+		formatString: #,0
+		displayFolder: 05 Crediti
+		lineageTag: ac990833-ba57-45ae-bd0b-ca16319d7129
+
+	measure 'Overdue Receivables' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE (
+			        [Outstanding Receivables],
+			        FactARInvoice[DueDate] < _D
+			    )
+		formatString: #,0
+		displayFolder: 05 Crediti
+		lineageTag: ffe797c5-de99-4457-9a94-0ca901ece14d
+
+	measure 'Overdue Receivables %' = DIVIDE ( [Overdue Receivables], [Outstanding Receivables] )
+		formatString: 0.0%
+		displayFolder: 05 Crediti
+		lineageTag: 6542aa1c-40d5-436c-9e2a-e5d2b2e55468
+
+	measure 'Overdue > 90 Days' =
+			VAR _D = [Report Date]
+			RETURN CALCULATE ( [Outstanding Receivables], FactARInvoice[DueDate] < _D - 90 )
+		formatString: #,0
+		displayFolder: 05 Crediti
+		lineageTag: a8701998-3a16-49be-a83d-441826c3d3cd
+
+	measure 'Gross Sales 90D' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactARInvoice[GrossAmount] ),
+			        DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+			    )
+		formatString: #,0
+		displayFolder: 05 Crediti
+		lineageTag: 88259838-e3df-40c6-b9eb-6b04848c4657
+
+	measure DSO = DIVIDE ( [Outstanding Receivables], [Gross Sales 90D] ) * 90
+		formatString: #,0.0
+		displayFolder: 05 Crediti
+		lineageTag: 74c3bab6-a0f2-46e8-9e95-4175c84f9489
+
+	measure 'DSO PY' = CALCULATE ( [DSO], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+		formatString: #,0.0
+		displayFolder: 05 Crediti
+		lineageTag: 6dcdb9ec-9e4b-4ebf-9483-d896dfe50725
+
+	measure 'Avg Payment Delay (days)' =
+			CALCULATE (
+			    AVERAGEX ( FactARInvoice, MAX ( 0, FactARInvoice[PaymentDelayDays] ) ),
+			    NOT ISBLANK ( FactARInvoice[PaymentDate] )
+			)
+		formatString: #,0.0
+		displayFolder: 05 Crediti
+		lineageTag: 5ad18e9a-0bde-4c96-a5b9-e5e65bdab2fa
+
+	measure 'Bounced RiBa' = CALCULATE ( COUNTROWS ( FactARInvoice ), FactARInvoice[IsBounced] = TRUE () )
+		formatString: #,0
+		displayFolder: 05 Crediti
+		lineageTag: 2b4ab020-fde1-4138-9a53-414fc7563a67
+
+	measure 'Bounced RiBa %' =
+			DIVIDE (
+			    [Bounced RiBa],
+			    CALCULATE ( COUNTROWS ( FactARInvoice ), Counterparty[PaymentMethod] = "RiBa" )
+			)
+		formatString: 0.0%
+		displayFolder: 05 Crediti
+		lineageTag: 14adf6d3-c3aa-4e0c-9457-7faf6375ed97
+
+	measure 'Outstanding Payables' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactAPInvoice[GrossAmount] ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        FactAPInvoice[InvoiceDate] <= _D,
+			        FILTER (
+			            ALL ( FactAPInvoice[PaymentDate] ),
+			            ISBLANK ( FactAPInvoice[PaymentDate] ) || FactAPInvoice[PaymentDate] > _D
+			        )
+			    )
+		formatString: #,0
+		displayFolder: 06 Debiti
+		lineageTag: 2a9af3f0-baf0-4e37-844e-b21a6141b15b
+
+	measure 'Overdue Payables' =
+			VAR _D = [Report Date]
+			RETURN CALCULATE ( [Outstanding Payables], FactAPInvoice[DueDate] < _D )
+		formatString: #,0
+		displayFolder: 06 Debiti
+		lineageTag: 662918bf-cdaa-4fa1-8189-3f9d8f044054
+
+	measure 'Purchases 90D' =
+			VAR _D = [Report Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactAPInvoice[GrossAmount] ),
+			        DATESINPERIOD ( 'Calendar'[Date], _D, -90, DAY )
+			    )
+		formatString: #,0
+		displayFolder: 06 Debiti
+		lineageTag: 35720437-ee12-4cc7-a0da-ae5c379367c6
+
+	measure DPO = DIVIDE ( [Outstanding Payables], [Purchases 90D] ) * 90
+		formatString: #,0.0
+		displayFolder: 06 Debiti
+		lineageTag: 0af54346-97e0-4508-8c1e-42856a9cfa9f
+
+	measure 'Net Trade Working Capital' = [Outstanding Receivables] - [Outstanding Payables]
+		formatString: #,0
+		displayFolder: 06 Debiti
+		lineageTag: b244fba6-dbdf-4432-ac18-8438e44e1792
+
+	measure 'DSO - DPO Gap' = [DSO] - [DPO]
+		formatString: #,0.0
+		displayFolder: 06 Debiti
+		lineageTag: 03d81b1c-71c0-4ce3-aa15-8e6f31354c83
+
+	measure 'Forecast Net Flow' = SUM ( FactCashForecast[Amount] )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 1fe62544-217b-439c-a1ac-940250ea9a64
+
+	measure 'Forecast Inflows' = CALCULATE ( SUM ( FactCashForecast[Amount] ), FactCashForecast[Amount] > 0 )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 0d984648-dcca-424f-8a09-49fb67074e05
+
+	measure 'Forecast Outflows' = -CALCULATE ( SUM ( FactCashForecast[Amount] ), FactCashForecast[Amount] < 0 )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: d5cc8c20-741f-4263-8394-a88fac35c46a
+
+	measure 'Forecast Opening Cash' =
+			VAR _AsOf = [As Of Date]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactBankBalanceDaily[ClosingBalance] ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        'Calendar'[Date] = _AsOf
+			    )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 7b63d581-50a3-4c4f-9128-17977c4cb519
+
+	measure 'Projected Cash' =
+			VAR _D = MAX ( 'Calendar'[Date] )
+			VAR _AsOf = [As Of Date]
+			RETURN
+			    IF (
+			        _D > _AsOf,
+			        [Forecast Opening Cash]
+			            + CALCULATE (
+			                SUM ( FactCashForecast[Amount] ),
+			                REMOVEFILTERS ( 'Calendar' ),
+			                'Calendar'[Date] > _AsOf,
+			                'Calendar'[Date] <= _D
+			            )
+			    )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 7a722591-1aab-410b-917e-0676c03b921b
+
+	measure 'Cash Actual and Projected' =
+			VAR _D = MAX ( 'Calendar'[Date] )
+			RETURN IF ( _D <= [As Of Date], [Daily Cash Position], [Projected Cash] )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: dd2873b7-c900-4cf3-ac19-eb0d51009d33
+
+	measure 'Projected Min Cash 13W' =
+			MINX (
+			    FILTER ( ALL ( 'Calendar'[Date] ), 'Calendar'[Date] > [As Of Date] && 'Calendar'[Date] <= [As Of Date] + 91 ),
+			    [Projected Cash]
+			)
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 6aedcf4f-bc32-433d-b802-0a69c8d73c78
+
+	measure 'Projected Min Cash Date' =
+			VAR _Min = [Projected Min Cash 13W]
+			RETURN
+			    MINX (
+			        FILTER (
+			            ALL ( 'Calendar'[Date] ),
+			            'Calendar'[Date] > [As Of Date] && 'Calendar'[Date] <= [As Of Date] + 91
+			                && [Projected Cash] = _Min
+			        ),
+			        'Calendar'[Date]
+			    )
+		displayFolder: 07 Previsione
+		lineageTag: e40302af-c2a0-49e4-8dae-9bae2268cebf
+
+	measure 'Funding Need 13W' =
+			VAR _Gap = [Min Cash Threshold] - [Projected Min Cash 13W]
+			RETURN IF ( _Gap > 0, _Gap, 0 )
+		formatString: #,0
+		displayFolder: 07 Previsione
+		lineageTag: 15f911fe-1a47-46dc-bc8d-6639b0550a1e
+
+	measure 'Alert Low Cash' = IF ( [Closing Cash] < [Min Cash Threshold], 1, 0 )
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 47485ac4-27b3-45d9-8c7c-f1d52d9c79cc
+
+	measure 'Alert Forecast Breach' = IF ( [Projected Min Cash 13W] < [Min Cash Threshold], 1, 0 )
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 44219ca6-1420-402f-97ba-f861778f3d8e
+
+	measure 'Alert Credit Line' = IF ( [Credit Line Usage %] * 100 > MAX ( TreasuryParameter[CreditLineUsageAlert] ), 1, 0 )
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 68ade249-9a61-43f5-9fab-f0c0006d9aca
+
+	measure 'Alert DSO' = IF ( [DSO] > MAX ( TreasuryParameter[DSOTarget] ), 1, 0 )
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: fbc9484f-e237-4509-9812-359acc13d476
+
+	measure 'Alert Overdue' = IF ( [Overdue Receivables %] * 100 > MAX ( TreasuryParameter[OverdueRatioAlert] ), 1, 0 )
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 9119d9f8-b0e3-49ec-a45f-726d48f81edf
+
+	measure 'Alert Liquidity Days' = IF ( [Liquidity Days] < MAX ( TreasuryParameter[LiquidityDaysMin] ), 1, 0 )
+		formatString: #,0.0
+		displayFolder: 08 Alert
+		lineageTag: 8d474e4c-5981-42b3-9ab5-f900586a1cd1
+
+	measure 'Active Alerts' =
+			[Alert Low Cash] + [Alert Forecast Breach] + [Alert Credit Line]
+			    + [Alert DSO] + [Alert Overdue] + [Alert Liquidity Days]
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: bcd826ed-bf53-4c68-80d2-954436627066
+
+	measure 'Treasury Status' =
+			SWITCH (
+			    TRUE (),
+			    [Alert Low Cash] = 1 || [Alert Forecast Breach] = 1, "ROSSO - rischio liquidita'",
+			    [Active Alerts] >= 2, "GIALLO - da monitorare",
+			    "VERDE - situazione sotto controllo"
+			)
+		displayFolder: 08 Alert
+		lineageTag: 1bfaedb1-0e8b-46d5-812e-ffc641a623ed
+
+	measure 'Treasury Status Color' =
+			SWITCH (
+			    TRUE (),
+			    [Alert Low Cash] = 1 || [Alert Forecast Breach] = 1, "#C0392B",
+			    [Active Alerts] >= 2, "#E0A100",
+			    "#1E8E5A"
+			)
+		displayFolder: 08 Alert
+		lineageTag: 700822a4-3095-4484-860c-5889871f0894
+
+	measure 'Alert Current Value' =
+			SWITCH (
+			    SELECTEDVALUE ( AlertList[AlertID] ),
+			    1, FORMAT ( [Closing Cash], "€ #,0" ),
+			    2, FORMAT ( [Projected Min Cash 13W], "€ #,0" ),
+			    3, FORMAT ( [Credit Line Usage %], "0.0%" ),
+			    4, FORMAT ( [DSO], "0" ) & " gg",
+			    5, FORMAT ( [Overdue Receivables %], "0.0%" ),
+			    6, FORMAT ( [Liquidity Days], "0" ) & " gg"
+			)
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 150be361-0684-4cdb-bb31-bd3f9b931e4e
+
+	measure 'Alert Threshold' =
+			SWITCH (
+			    SELECTEDVALUE ( AlertList[AlertID] ),
+			    1, FORMAT ( [Min Cash Threshold], "€ #,0" ),
+			    2, FORMAT ( [Min Cash Threshold], "€ #,0" ),
+			    3, FORMAT ( MAX ( TreasuryParameter[CreditLineUsageAlert] ) / 100, "0%" ),
+			    4, FORMAT ( MAX ( TreasuryParameter[DSOTarget] ), "0" ) & " gg",
+			    5, FORMAT ( MAX ( TreasuryParameter[OverdueRatioAlert] ) / 100, "0%" ),
+			    6, FORMAT ( MAX ( TreasuryParameter[LiquidityDaysMin] ), "0" ) & " gg"
+			)
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: e3eb80a0-9f44-4029-85af-7552730294a7
+
+	measure 'Alert Is Active' =
+			SWITCH (
+			    SELECTEDVALUE ( AlertList[AlertID] ),
+			    1, [Alert Low Cash], 2, [Alert Forecast Breach], 3, [Alert Credit Line],
+			    4, [Alert DSO], 5, [Alert Overdue], 6, [Alert Liquidity Days]
+			)
+		formatString: #,0
+		displayFolder: 08 Alert
+		lineageTag: 3238847d-e20b-4718-a026-c75160d57c12
+
+	measure 'Alert Icon' = IF ( [Alert Is Active] = 1, "●  ATTIVO", "○  ok" )
+		displayFolder: 08 Alert
+		lineageTag: f50e03c7-d3d8-4437-84c0-037666d92362
+
+	measure 'Alert Color' = IF ( [Alert Is Active] = 1, "#C0392B", "#1E8E5A" )
+		displayFolder: 08 Alert
+		lineageTag: 3ba04587-058f-4059-932c-f2cba9bf1715
+
+	measure 'Title Cash Position' = "Posizione di cassa al " & FORMAT ( [Report Date], "dd/mm/yyyy" )
+		displayFolder: 09 UI
+		lineageTag: c3b76af9-22a4-42d6-9cc2-e0ef31aa58d3
+
+	measure 'Subtitle Forecast' =
+			"Previsione dal " & FORMAT ( [As Of Date] + 1, "dd/mm/yyyy" ) & " al "
+			    & FORMAT ( [As Of Date] + 91, "dd/mm/yyyy" ) & " - fonti: scadenzari aperti + uscite ricorrenti"
+		displayFolder: 09 UI
+		lineageTag: 7737e3cd-4d04-4c3c-acb1-5ef7b3f2a9fd
+
+	measure 'Funding Need Message' =
+			VAR _Need = [Funding Need 13W]
+			RETURN
+			    IF (
+			        _Need > 0,
+			        "Fabbisogno stimato di € " & FORMAT ( _Need, "#,0" ) & " intorno al "
+			            & FORMAT ( [Projected Min Cash Date], "dd/mm" ) & ": valutare utilizzo affidamenti o anticipo fatture.",
+			        "Nessun fabbisogno previsto: il minimo di cassa resta sopra la soglia di € "
+			            & FORMAT ( [Min Cash Threshold], "#,0" ) & "."
+			    )
+		displayFolder: 09 UI
+		lineageTag: 26d65f6d-4eaa-4211-bd96-070060de7621
+
+	column TransactionID
+		dataType: string
+		lineageTag: e5cd1180-e641-4cde-bc61-954cead161f3
+		summarizeBy: none
+		sourceColumn: TransactionID
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: 23a88222-7b86-43b6-a434-0066779114a8
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column BankAccountKey
+		dataType: int64
+		isHidden
+		lineageTag: 74ce9750-b87c-4dd5-b5f2-f5c596ba9625
+		summarizeBy: none
+		sourceColumn: BankAccountKey
+
+	column SiteKey
+		dataType: int64
+		isHidden
+		lineageTag: 84704084-ff54-4554-8502-d4e6be049212
+		summarizeBy: none
+		sourceColumn: SiteKey
+
+	column CashCategoryKey
+		dataType: int64
+		isHidden
+		lineageTag: f911a044-e0c6-4044-af1d-902d6a7d0dcf
+		summarizeBy: none
+		sourceColumn: CashCategoryKey
+
+	column CounterpartyKey
+		dataType: int64
+		isHidden
+		lineageTag: 18bf7fe7-52b5-47dc-9c10-286bbd4c48b4
+		summarizeBy: none
+		sourceColumn: CounterpartyKey
+
+	column Amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 946d6498-8c43-46e2-a8ca-34ae43a821ee
+		summarizeBy: sum
+		sourceColumn: Amount
+
+	column InflowAmount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 37bf236d-2ff1-4bca-8825-5646372af1f0
+		summarizeBy: sum
+		sourceColumn: InflowAmount
+
+	column OutflowAmount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: c9b9b8a2-fe0e-4d16-8376-990991f79bbc
+		summarizeBy: sum
+		sourceColumn: OutflowAmount
+
+	column Description
+		dataType: string
+		lineageTag: 1ae985bc-a9c1-4d0b-b0f2-b1a8c41aee9b
+		summarizeBy: none
+		sourceColumn: Description
+
+	column DocumentReference
+		dataType: string
+		lineageTag: 33d496ca-7e59-4efe-aae5-c807525f6aa7
+		summarizeBy: none
+		sourceColumn: DocumentReference
+
+	partition FactBankTransaction = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\fact_bank_transaction.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"TransactionID", type text}, {"DateKey", Int64.Type}, {"BankAccountKey", Int64.Type}, {"SiteKey", Int64.Type}, {"CashCategoryKey", Int64.Type}, {"CounterpartyKey", Int64.Type}, {"Amount", type number}, {"InflowAmount", type number}, {"OutflowAmount", type number}, {"Description", type text}, {"DocumentReference", type text}}, "en-US")
+				in
+				    Typed
+

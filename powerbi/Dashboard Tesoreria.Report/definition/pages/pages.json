@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
+  "pageOrder": [
+    "t1sintesi00000000001",
+    "t2rendiconto0000000002",
+    "t3posizione00000000003",
+    "t4crediti0000000004",
+    "t5previsione000000005"
+  ],
+  "activePageName": "t5previsione000000005"
+}

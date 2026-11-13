@@ -1,0 +1,62 @@
+table Counterparty
+	lineageTag: d7ed0931-1a44-5f6d-9c5b-493f3fd9a2be
+
+	column CounterpartyKey
+		dataType: int64
+		isHidden
+		lineageTag: 4848d06a-1421-4dda-bf0e-739bb7c4b6b5
+		summarizeBy: none
+		sourceColumn: CounterpartyKey
+
+	column CounterpartyCode
+		dataType: string
+		lineageTag: 7f591d2b-3512-454e-8349-bd0948b3f6bc
+		summarizeBy: none
+		sourceColumn: CounterpartyCode
+
+	column CounterpartyName
+		dataType: string
+		lineageTag: d0d0b27d-fc2c-42e5-91a8-5aba71f450fb
+		summarizeBy: none
+		sourceColumn: CounterpartyName
+
+	column CounterpartyType
+		dataType: string
+		lineageTag: 267f30fc-b683-4192-b100-999b2bc2ad3f
+		summarizeBy: none
+		sourceColumn: CounterpartyType
+
+	column HomeSiteCode
+		dataType: string
+		lineageTag: 48aaeaf3-371d-4632-ae89-b338f4166e55
+		summarizeBy: none
+		sourceColumn: HomeSiteCode
+
+	column PaymentTerms
+		dataType: string
+		lineageTag: a3fadf52-57a1-48bf-bdc2-80ecd45808a7
+		summarizeBy: none
+		sourceColumn: PaymentTerms
+
+	column PaymentMethod
+		dataType: string
+		lineageTag: 58a0498a-89a0-4381-8e95-078bbb3422d3
+		summarizeBy: none
+		sourceColumn: PaymentMethod
+
+	column CustomerSegment
+		dataType: string
+		lineageTag: b81a4411-9352-46bf-b620-739c6ecd3d86
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+	partition Counterparty = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\counterparty.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"CounterpartyKey", Int64.Type}, {"CounterpartyCode", type text}, {"CounterpartyName", type text}, {"CounterpartyType", type text}, {"HomeSiteCode", type text}, {"PaymentTerms", type text}, {"PaymentMethod", type text}, {"CustomerSegment", type text}}, "en-US")
+				in
+				    Typed
+

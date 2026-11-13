@@ -1,0 +1,31 @@
+table AlertList
+	lineageTag: f68fcd31-6d34-57f9-a3cb-437e526e22eb
+
+	column AlertID
+		dataType: int64
+		lineageTag: 074c6741-652b-47f2-863b-20439bf79d1f
+		summarizeBy: none
+		sourceColumn: AlertID
+
+	column AlertName
+		dataType: string
+		lineageTag: 7b2962a3-aa27-4a09-90e7-d2d6cf83551c
+		summarizeBy: none
+		sourceColumn: AlertName
+
+	column Rule
+		dataType: string
+		lineageTag: 1937b94b-4fc7-48de-aae6-b3637d0141ba
+		summarizeBy: none
+		sourceColumn: Rule
+
+	partition AlertList = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\alert_list.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"AlertID", Int64.Type}, {"AlertName", type text}, {"Rule", type text}}, "en-US")
+				in
+				    Typed
+

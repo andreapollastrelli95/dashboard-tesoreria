@@ -1,0 +1,134 @@
+table FactARInvoice
+	lineageTag: 34b2cb94-a853-57a2-bc8e-95fd604f8472
+
+	column ARInvoiceKey
+		dataType: int64
+		isHidden
+		lineageTag: 07b08651-6a89-414b-b08d-148af674379f
+		summarizeBy: none
+		sourceColumn: ARInvoiceKey
+
+	column InvoiceNumber
+		dataType: string
+		lineageTag: f86a5d14-0a8b-4fc5-a8db-21aad5d2684d
+		summarizeBy: none
+		sourceColumn: InvoiceNumber
+
+	column InvoiceDateKey
+		dataType: int64
+		isHidden
+		lineageTag: 324de594-9aeb-43d2-b736-eee7bf8c35ee
+		summarizeBy: none
+		sourceColumn: InvoiceDateKey
+
+	column SiteKey
+		dataType: int64
+		isHidden
+		lineageTag: ce21e953-d9a7-4bff-9c85-d334476f8001
+		summarizeBy: none
+		sourceColumn: SiteKey
+
+	column CounterpartyKey
+		dataType: int64
+		isHidden
+		lineageTag: 11697058-9f84-459f-8768-716319a82241
+		summarizeBy: none
+		sourceColumn: CounterpartyKey
+
+	column InvoiceDate
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: a0ccca26-93d5-42b3-9580-02fd99938e51
+		summarizeBy: none
+		sourceColumn: InvoiceDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DueDate
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 168a1ed2-5cfa-4ba3-8666-77e720fc1f36
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PaymentDate
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 4b7fa5a7-3acb-4b84-bff8-3590babbb140
+		summarizeBy: none
+		sourceColumn: PaymentDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NetAmount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 23565b46-103b-42ca-b3cf-c26e8e049b4a
+		summarizeBy: sum
+		sourceColumn: NetAmount
+
+	column GrossAmount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d17e2d3f-d38d-4f49-837c-74e94aed10c6
+		summarizeBy: sum
+		sourceColumn: GrossAmount
+
+	column AmountPaid
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a9b07f81-e8c2-448a-892e-f4b9809bfbeb
+		summarizeBy: sum
+		sourceColumn: AmountPaid
+
+	column IsBounced
+		dataType: boolean
+		lineageTag: 56997d33-0e33-40ab-ba7e-ed579f39f08f
+		summarizeBy: none
+		sourceColumn: IsBounced
+
+	column PaymentDelayDays
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ccdd5e2f-57b9-4e02-9f07-f1602c6c2854
+		summarizeBy: sum
+		sourceColumn: PaymentDelayDays
+
+	column IsOpenAtAsOf
+		dataType: boolean
+		lineageTag: a3fb67d6-18af-4e95-9ec8-8d9150cc3f07
+		summarizeBy: none
+		sourceColumn: IsOpenAtAsOf
+
+	column DaysOverdueAtAsOf
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 276d4cc9-0dc5-4faf-8e9b-36b18ce30640
+		summarizeBy: sum
+		sourceColumn: DaysOverdueAtAsOf
+
+	column AgingBucket
+		dataType: string
+		lineageTag: 09fb0e2e-33ce-4653-8e31-69284134db82
+		summarizeBy: none
+		sourceColumn: AgingBucket
+
+	column OpenAmountAtAsOf
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5d80f938-5863-4219-9f9c-c94f638fa08c
+		summarizeBy: sum
+		sourceColumn: OpenAmountAtAsOf
+
+	partition FactARInvoice = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\fact_ar_invoice.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"ARInvoiceKey", Int64.Type}, {"InvoiceNumber", type text}, {"InvoiceDateKey", Int64.Type}, {"SiteKey", Int64.Type}, {"CounterpartyKey", Int64.Type}, {"InvoiceDate", type date}, {"DueDate", type date}, {"PaymentDate", type date}, {"NetAmount", type number}, {"GrossAmount", type number}, {"AmountPaid", type number}, {"IsBounced", type logical}, {"PaymentDelayDays", type number}, {"IsOpenAtAsOf", type logical}, {"DaysOverdueAtAsOf", type number}, {"AgingBucket", type text}, {"OpenAmountAtAsOf", type number}}, "en-US")
+				in
+				    Typed
+

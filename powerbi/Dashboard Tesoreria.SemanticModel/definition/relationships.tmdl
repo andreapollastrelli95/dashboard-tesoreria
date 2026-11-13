@@ -1,0 +1,56 @@
+relationship r1
+	fromColumn: FactBankTransaction.DateKey
+	toColumn: Calendar.DateKey
+
+relationship r2
+	fromColumn: FactBankTransaction.BankAccountKey
+	toColumn: BankAccount.BankAccountKey
+
+relationship r3
+	fromColumn: FactBankTransaction.SiteKey
+	toColumn: Site.SiteKey
+
+relationship r4
+	fromColumn: FactBankTransaction.CashCategoryKey
+	toColumn: CashCategory.CashCategoryKey
+
+relationship r5
+	fromColumn: FactBankTransaction.CounterpartyKey
+	toColumn: Counterparty.CounterpartyKey
+
+relationship r6
+	fromColumn: FactBankBalanceDaily.DateKey
+	toColumn: Calendar.DateKey
+
+relationship r7
+	fromColumn: FactBankBalanceDaily.BankAccountKey
+	toColumn: BankAccount.BankAccountKey
+
+relationship r8
+	fromColumn: FactARInvoice.InvoiceDateKey
+	toColumn: Calendar.DateKey
+
+relationship r9
+	fromColumn: FactARInvoice.SiteKey
+	toColumn: Site.SiteKey
+
+relationship r10
+	fromColumn: FactARInvoice.CounterpartyKey
+	toColumn: Counterparty.CounterpartyKey
+
+relationship r11
+	fromColumn: FactAPInvoice.InvoiceDateKey
+	toColumn: Calendar.DateKey
+
+relationship r12
+	fromColumn: FactAPInvoice.SiteKey
+	toColumn: Site.SiteKey
+
+relationship r13
+	fromColumn: FactAPInvoice.CounterpartyKey
+	toColumn: Counterparty.CounterpartyKey
+
+relationship r14
+	fromColumn: FactCashForecast.DateKey
+	toColumn: Calendar.DateKey
+

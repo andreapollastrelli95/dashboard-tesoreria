@@ -1,0 +1,134 @@
+table Calendar
+	lineageTag: b36966db-d0d0-55af-8089-7f777e1e7476
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: 6ddebf7f-a0e0-4f2f-9843-bec91b4d55ec
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: 33a56dab-fcd3-4b7f-9746-fe4e2596fb81
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Year
+		dataType: int64
+		lineageTag: 46c7733a-8ec8-4ac9-aac0-441fff55a578
+		summarizeBy: none
+		sourceColumn: Year
+
+	column Quarter
+		dataType: int64
+		lineageTag: 998bb110-7ce4-48c0-bf62-16b0e0a5d673
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	column QuarterLabel
+		dataType: string
+		lineageTag: 288815ab-df3f-4028-94d9-cdfb44e7e9c5
+		summarizeBy: none
+		sourceColumn: QuarterLabel
+
+	column Month
+		dataType: int64
+		lineageTag: fd8ef282-1247-46fe-8517-5cc16c633f6a
+		summarizeBy: none
+		sourceColumn: Month
+
+	column MonthName
+		dataType: string
+		lineageTag: 9d35bebb-0dc5-4ee7-9b66-89532361b069
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: Month
+
+	column MonthShort
+		dataType: string
+		lineageTag: fc02c964-c0d5-4561-9934-7e181330f225
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: Month
+
+	column YearMonth
+		dataType: int64
+		lineageTag: 3bfd6a30-3b89-4993-a13d-51de6374c6b1
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	column YearMonthLabel
+		dataType: string
+		lineageTag: 84e023f9-f1c5-4f30-be12-6d4651540265
+		summarizeBy: none
+		sourceColumn: YearMonthLabel
+		sortByColumn: YearMonth
+
+	column WeekOfYear
+		dataType: int64
+		lineageTag: a961d1cc-43c6-421c-a64b-34024808038d
+		summarizeBy: none
+		sourceColumn: WeekOfYear
+
+	column DayOfWeek
+		dataType: int64
+		lineageTag: 6cc43394-d2ec-454e-83c6-444b5a5c3128
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+	column DayName
+		dataType: string
+		lineageTag: 5020ed3e-0a03-4d28-9ca4-9968e5c8b942
+		summarizeBy: none
+		sourceColumn: DayName
+
+	column IsWorkingDay
+		dataType: boolean
+		lineageTag: 742e68c0-bee7-414e-a40d-38758d303050
+		summarizeBy: none
+		sourceColumn: IsWorkingDay
+
+	column WeekStart
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 3b4d86d5-e38c-442b-9c25-09702a53ee13
+		summarizeBy: none
+		sourceColumn: WeekStart
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekLabel
+		dataType: string
+		lineageTag: 34a5b040-a04f-4e99-b5b7-3d08b4ca2868
+		summarizeBy: none
+		sourceColumn: WeekLabel
+		sortByColumn: WeekStart
+
+	column Period
+		dataType: string
+		lineageTag: 789d1348-9896-4ae2-a64a-8eafdc78f85d
+		summarizeBy: none
+		sourceColumn: Period
+
+	column RelativeWeek
+		dataType: int64
+		lineageTag: 851d55b6-52c5-4624-8da1-e05a49e72022
+		summarizeBy: none
+		sourceColumn: RelativeWeek
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\calendar.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Date", type date}, {"DateKey", Int64.Type}, {"Year", Int64.Type}, {"Quarter", Int64.Type}, {"QuarterLabel", type text}, {"Month", Int64.Type}, {"MonthName", type text}, {"MonthShort", type text}, {"YearMonth", Int64.Type}, {"YearMonthLabel", type text}, {"WeekOfYear", Int64.Type}, {"DayOfWeek", Int64.Type}, {"DayName", type text}, {"IsWorkingDay", type logical}, {"WeekStart", type date}, {"WeekLabel", type text}, {"Period", type text}, {"RelativeWeek", Int64.Type}}, "en-US")
+				in
+				    Typed
+

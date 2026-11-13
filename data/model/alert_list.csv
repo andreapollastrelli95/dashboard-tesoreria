@@ -1,0 +1,7 @@
+AlertID,AlertName,Rule
+1,Liquidità sotto soglia,Cassa di gruppo < soglia minima
+2,Previsione sotto soglia,Minimo previsto 13 settimane < soglia
+3,Utilizzo affidamenti,Utilizzo fidi > % parametro
+4,DSO oltre obiettivo,DSO > giorni obiettivo
+5,Scaduto clienti elevato,Scaduto / crediti aperti > % parametro
+6,Giorni di autonomia,Cassa / uscite medie giornaliere < giorni minimi

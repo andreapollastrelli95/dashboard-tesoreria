@@ -1,0 +1,2 @@
+MinCashThreshold,CreditLineUsageAlert,DSOTarget,OverdueRatioAlert,LiquidityDaysMin
+2500000,70,90,10,30

@@ -16,7 +16,7 @@
 // ------------------------------------------------------- 01 Data riferimento
 
 As Of Date =
-MAX ( FactCashForecast[AsOfDate] )
+CALCULATE ( MAX ( FactCashForecast[AsOfDate] ), REMOVEFILTERS ( 'Calendar' ) )
 // Data dell'ultimo estratto conto caricato (la previsione parte dal giorno dopo).
 
 Report Date =

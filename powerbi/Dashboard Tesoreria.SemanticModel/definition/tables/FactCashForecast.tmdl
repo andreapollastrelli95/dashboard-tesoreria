@@ -1,0 +1,49 @@
+table FactCashForecast
+	lineageTag: 2ef178f2-38cc-5099-bf34-d6e78c0d1e6c
+
+	column AsOfDate
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: ff1466d9-f1f9-43ef-9f77-57fca789511c
+		summarizeBy: none
+		sourceColumn: AsOfDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: 9f100b70-f45f-44fa-a02f-aeb16d87f470
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column CashCategoryKey
+		dataType: int64
+		isHidden
+		lineageTag: 128bc044-77aa-454e-a4a4-7c3147104341
+		summarizeBy: none
+		sourceColumn: CashCategoryKey
+
+	column SourceType
+		dataType: string
+		lineageTag: e1ec350b-377e-44b1-860d-4c19c8efddd5
+		summarizeBy: none
+		sourceColumn: SourceType
+
+	column Amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6b9da945-49b7-4d9b-904a-afdbd3b23771
+		summarizeBy: sum
+		sourceColumn: Amount
+
+	partition FactCashForecast = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\fact_cash_forecast.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"AsOfDate", type date}, {"DateKey", Int64.Type}, {"CashCategoryKey", Int64.Type}, {"SourceType", type text}, {"Amount", type number}}, "en-US")
+				in
+				    Typed
+

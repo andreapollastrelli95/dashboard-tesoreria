@@ -1,0 +1,62 @@
+table BankAccount
+	lineageTag: c8e227f9-0c28-53dc-80bb-f702e3a26bc9
+
+	column BankAccountKey
+		dataType: int64
+		isHidden
+		lineageTag: d0a59dba-4e41-41ad-88df-cce47f800233
+		summarizeBy: none
+		sourceColumn: BankAccountKey
+
+	column BankAccountCode
+		dataType: string
+		lineageTag: 69b5e47e-7062-4a22-b429-c73ee53fd36b
+		summarizeBy: none
+		sourceColumn: BankAccountCode
+
+	column AccountName
+		dataType: string
+		lineageTag: 8814b4cf-796a-4593-ad20-9ff690e63506
+		summarizeBy: none
+		sourceColumn: AccountName
+
+	column BankName
+		dataType: string
+		lineageTag: cc5e2656-eebd-4325-b049-f4dd1e25dc4c
+		summarizeBy: none
+		sourceColumn: BankName
+
+	column AccountType
+		dataType: string
+		lineageTag: cd329408-079d-47e7-b0a3-3783d41f7b92
+		summarizeBy: none
+		sourceColumn: AccountType
+
+	column CreditLine
+		dataType: int64
+		lineageTag: 25004d7a-c3c7-4b16-ae2f-a1f13df96dcb
+		summarizeBy: none
+		sourceColumn: CreditLine
+
+	column AccountSite
+		dataType: string
+		lineageTag: 68a452cb-fd3f-47f4-885f-d4cd81266fe4
+		summarizeBy: none
+		sourceColumn: AccountSite
+
+	column AccountShortName
+		dataType: string
+		lineageTag: 8636d6e8-a87a-402a-a36e-01a3ec5b16fb
+		summarizeBy: none
+		sourceColumn: AccountShortName
+
+	partition BankAccount = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\bank_account.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"BankAccountKey", Int64.Type}, {"BankAccountCode", type text}, {"AccountName", type text}, {"BankName", type text}, {"AccountType", type text}, {"CreditLine", Int64.Type}, {"AccountSite", type text}, {"AccountShortName", type text}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,44 @@
+table Site
+	lineageTag: 1f31d742-b302-5be2-a364-268bebc3de19
+
+	column SiteKey
+		dataType: int64
+		isHidden
+		lineageTag: f558da97-3c44-4be5-9262-3ff9ba755a3f
+		summarizeBy: none
+		sourceColumn: SiteKey
+
+	column SiteCode
+		dataType: string
+		lineageTag: 3d05d4f1-c87b-45e0-92ae-986383abfa4c
+		summarizeBy: none
+		sourceColumn: SiteCode
+
+	column SiteName
+		dataType: string
+		lineageTag: 730ab49f-299c-4ab5-afd0-23e4c0f6f0e8
+		summarizeBy: none
+		sourceColumn: SiteName
+
+	column Area
+		dataType: string
+		lineageTag: 3f9f78f5-1b82-473f-95c0-7d67a26d90ee
+		summarizeBy: none
+		sourceColumn: Area
+
+	column Headcount
+		dataType: int64
+		lineageTag: be567ef0-4b47-479d-94af-7b33c942eb84
+		summarizeBy: none
+		sourceColumn: Headcount
+
+	partition Site = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\site.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"SiteKey", Int64.Type}, {"SiteCode", type text}, {"SiteName", type text}, {"Area", type text}, {"Headcount", Int64.Type}}, "en-US")
+				in
+				    Typed
+

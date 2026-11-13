@@ -1,0 +1,47 @@
+table FactBankBalanceDaily
+	lineageTag: ee0fd036-b340-58ad-a035-26cd6d2ab965
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: 2037f756-fd1c-4bb5-8e31-afe4cae10998
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column BankAccountKey
+		dataType: int64
+		isHidden
+		lineageTag: 91699cf5-8e1c-4d2a-9de6-5b58343f6457
+		summarizeBy: none
+		sourceColumn: BankAccountKey
+
+	column ClosingBalance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 91269b78-cd23-4aea-a143-422d5c6cb6f7
+		summarizeBy: sum
+		sourceColumn: ClosingBalance
+
+	column CreditLine
+		dataType: int64
+		lineageTag: 17768e27-b99a-41e9-9ace-f8f4194d6c0f
+		summarizeBy: none
+		sourceColumn: CreditLine
+
+	column AvailableFunds
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 197d8bf5-84a0-4183-bb3c-96d5096c2439
+		summarizeBy: sum
+		sourceColumn: AvailableFunds
+
+	partition FactBankBalanceDaily = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\fact_bank_balance_daily.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"DateKey", Int64.Type}, {"BankAccountKey", Int64.Type}, {"ClosingBalance", type number}, {"CreditLine", Int64.Type}, {"AvailableFunds", type number}}, "en-US")
+				in
+				    Typed
+

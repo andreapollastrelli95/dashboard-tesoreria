@@ -1,0 +1,57 @@
+table CashCategory
+	lineageTag: 1dce5812-b792-5275-b4b7-9ccf78340ec5
+
+	column CashCategoryKey
+		dataType: int64
+		isHidden
+		lineageTag: d2348b02-7905-4983-a69b-2c14bd62ec4d
+		summarizeBy: none
+		sourceColumn: CashCategoryKey
+
+	column CategoryCode
+		dataType: string
+		lineageTag: 5c76e9fc-c1f2-4595-a1e6-a507c37573f4
+		summarizeBy: none
+		sourceColumn: CategoryCode
+
+	column CategoryName
+		dataType: string
+		lineageTag: e649477e-96ee-4a3d-bf48-b5202ddbd548
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+	column CashFlowSection
+		dataType: string
+		lineageTag: bbfb4033-5834-462b-ba66-0a4430ad6478
+		summarizeBy: none
+		sourceColumn: CashFlowSection
+		sortByColumn: SectionSort
+
+	column SectionSort
+		dataType: int64
+		lineageTag: cd347191-5e85-4631-a07c-49f80c11ad9e
+		summarizeBy: none
+		sourceColumn: SectionSort
+
+	column Direction
+		dataType: string
+		lineageTag: 07660b8f-68e6-4165-93e6-543e23946bb3
+		summarizeBy: none
+		sourceColumn: Direction
+
+	column CategoryGroup
+		dataType: string
+		lineageTag: 590798cb-e4ec-48ac-91fc-3c14fa4a6af2
+		summarizeBy: none
+		sourceColumn: CategoryGroup
+
+	partition CashCategory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Projects\dashboard-tesoreria\data\model\cash_category.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"CashCategoryKey", Int64.Type}, {"CategoryCode", type text}, {"CategoryName", type text}, {"CashFlowSection", type text}, {"SectionSort", Int64.Type}, {"Direction", type text}, {"CategoryGroup", type text}}, "en-US")
+				in
+				    Typed
+
