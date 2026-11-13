@@ -1,0 +1,5 @@
+# dati: niente conversione dei fine riga, servono LF per BULK INSERT
+*.csv -text
+*.sql text eol=crlf
+*.dax text
+*.m   text
