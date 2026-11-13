@@ -1,0 +1,8 @@
+BankAccountCode,AccountName,BankName,SiteCode,AccountType,CreditLine
+BK01,Intesa Sanpaolo - Conto corrente ordinario,Intesa Sanpaolo,MI,Conto corrente ordinario,1500000
+BK02,UniCredit - Conto corrente ordinario,UniCredit,MI,Conto corrente ordinario,1000000
+BK03,Banco BPM - Conto anticipi / RiBa,Banco BPM,MI,Conto anticipi / RiBa,800000
+BK04,BPER Banca - Conto corrente ordinario,BPER Banca,BO,Conto corrente ordinario,500000
+BK05,BNL - Conto corrente ordinario,BNL,RM,Conto corrente ordinario,400000
+BK06,Credem - Conto corrente ordinario,Credem,NA,Conto corrente ordinario,300000
+BK07,Banca Sella - Conto deposito vincolabile,Banca Sella,MI,Conto deposito vincolabile,0
